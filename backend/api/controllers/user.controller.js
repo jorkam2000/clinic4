@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const Patient = require("../models/patient.model");
 const bcrypt = require("bcrypt");
 
 const getAllUsers = async (req, res) => {
@@ -30,9 +31,9 @@ const getAllUsers = async (req, res) => {
 const getOneUser = async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id, {
-      // include: {
-      //   model: Patient, // EAGER LOADING. Devolvemos la info del usuario incluyendo en el mismo objeto la información de contacto que tenga relacionada
-      // },
+      include: {
+        model: Patient, // EAGER LOADING. Devolvemos la info del usuario incluyendo en el mismo objeto la información del paciente que tenga relacionada
+      },
     });
 
     if (!user) {
