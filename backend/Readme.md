@@ -27,32 +27,52 @@ The Authentication flow for the application is:
 | PUT    | /user/:id      | YES   | admin | Update One User     | `name`, `email`, `phone`, `password`, `role` | { message: `string`, result: `object` } |
 | POST   | /user          | YES   | admin | Create One User     | `name`, `email`, `phone`, `password`, `role` | { message: `string`, result: `object` } |
 
+### Patient Endpoints
+
+| METHOD | ENDPOINT | TOKEN | ROLE | DESCRIPTION             | POST PARAMS                                            | RETURNS                                 |
+| ------ | -------- | ----- | ---- | ----------------------- | ------------------------------------------------------ | --------------------------------------- |
+| GET    | /patient | YES   | user | Get Own patient data    |                                                        | { message: `string`, result: `object` } |
+| PUT    | /patient | YES   | user | Update Own patient data | `historical_record`, `insurance_id`,`insurance_number` | { message: `string`, result: `object` } |
+
 ## Appoinments Endpoints
 
-| METHOD | ENDPOINT         | TOKEN | ROLE  | DESCRIPTION                 | POST PARAMS                                                         | RETURNS                                 |
-| ------ | ---------------- | ----- | ----- | --------------------------- | ------------------------------------------------------------------- | --------------------------------------- |
-| GET    | /appointment     | YES   | user  | Get all of own appointments |                                                                     | { message: `string`, result: `object` } |
-| GET    | /appointment/:id | YES   | user  | Get one appointment         |                                                                     | { message: `string`, result: `object` } |
-| PUT    | /appointment/:id | YES   | user  | Update one appointment      | `doctor_info_id`, `date`, `time`, `observations`, `patient_info_id` | { message: `string`, result: `object` } |
-| GET    | /appointment     | YES   | admin | Get All Users               |                                                                     | { message: `string`, result: `array` }  |
-| GET    | /appointment/:id | YES   | admin | Get One User                |                                                                     | { message: `string`, result: `object` } |
-| PUT    | /appointment/:id | YES   | admin | Update One User             | `name`, `email`, `password`, `role`                                 | { message: `string`, result: `object` } |
-| POST   | /appointment     | YES   | admin | Create One User             | `name`, `email`, `password`, `role`                                 | { message: `string`, result: `object` } |
+| METHOD | ENDPOINT         | TOKEN | ROLE   | DESCRIPTION              | POST PARAMS                                                                                                        | RETURNS                                 |
+| ------ | ---------------- | ----- | ------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------- |
+| GET    | /appointment     | YES   | user   | Get all own appointments |                                                                                                                    | { message: `string`, result: `array` }  |
+| GET    | /appointment/:id | YES   | user   | Get one appointment      |                                                                                                                    | { message: `string`, result: `object` } |
+| PUT    | /appointment/:id | YES   | user   | Update one appointment   | `doctor_data_id`, `date`, `time`, `confirmed`, `medical_observation`, `medical_evaluation`, `medical_prescription` | { message: `string`, result: `object` } |
+| GET    | /appointment     | YES   | doctor | Get all own appointments |                                                                                                                    | { message: `string`, result: `array` }  |
+| GET    | /appointment/:id | YES   | doctor | Get one appointment      |                                                                                                                    | { message: `string`, result: `object` } |
+| PUT    | /appointment/:id | YES   | doctor | Update one appointment   | `confirmed`                                                                                                        | { message: `string`, result: `object` } |
+| GET    | /appointment     | YES   | admin  | Get All appointments     |                                                                                                                    | { message: `string`, result: `array` }  |
+| GET    | /appointment/:id | YES   | admin  | Get one appointment      |                                                                                                                    | { message: `string`, result: `object` } |
+| PUT    | /appointment/:id | YES   | admin  | Update one appointment   | `doctor_data_id`, `date`, `time`, `confirmed`, `medical_observation`, `medical_evaluation`, `medical_prescription` | { message: `string`, result: `object` } |
+| POST   | /appointment     | YES   | admin  | Create one appointment   | `doctor_data_id`, `date`, `time`, `confirmed`, `medical_observation`, `medical_evaluation`, `medical_prescription` | { message: `string`, result: `object` } |
 
-## Doctor_info Endpoints
+## Doctor_data Endpoints
 
-| METHOD | ENDPOINT         | TOKEN | ROLE  | DESCRIPTION            | POST PARAMS                 | RETURNS                                 |
-| ------ | ---------------- | ----- | ----- | ---------------------- | --------------------------- | --------------------------------------- |
-| GET    | /doctor_info     | YES   | admin | Get All doctors info   |                             | { message: `string`, result: `array` }  |
-| GET    | /doctor_info/:id | YES   | admin | Get One doctor info    |                             | { message: `string`, result: `object` } |
-| PUT    | /doctor_info/:id | YES   | admin | Update One doctor info | `doctor_id`, `specialty_id` | { message: `string`, result: `object` } |
-| POST   | /doctor_info     | YES   | admin | Create One doctor info | `doctor_id`, `specialty_id` | { message: `string`, result: `object` } |
+| METHOD | ENDPOINT         | TOKEN | ROLE   | DESCRIPTION            | POST PARAMS                 | RETURNS                                 |
+| ------ | ---------------- | ----- | ------ | ---------------------- | --------------------------- | --------------------------------------- |
+| GET    | /doctor_data     | YES   | doctor | Get All doctors data   |                             | { message: `string`, result: `array` }  |
+| GET    | /doctor_data     | YES   | admin  | Get All doctors data   |                             | { message: `string`, result: `array` }  |
+| GET    | /doctor_data/:id | YES   | admin  | Get One doctor data    |                             | { message: `string`, result: `object` } |
+| PUT    | /doctor_data/:id | YES   | admin  | Update One doctor data | `doctor_id`, `specialty_id` | { message: `string`, result: `object` } |
+| POST   | /doctor_data     | YES   | admin  | Create One doctor data | `doctor_id`, `specialty_id` | { message: `string`, result: `object` } |
 
-## Specialties Endpoints
+## Specializations Endpoints
+
+| METHOD | ENDPOINT            | TOKEN | ROLE  | DESCRIPTION               | POST PARAMS | RETURNS                                 |
+| ------ | ------------------- | ----- | ----- | ------------------------- | ----------- | --------------------------------------- |
+| GET    | /specialization     | YES   | admin | Get All Specializations   |             | { message: `string`, result: `array` }  |
+| GET    | /specialization/:id | YES   | admin | Get One Specialization    |             | { message: `string`, result: `object` } |
+| PUT    | /specialization/:id | YES   | admin | Update One Specialization | `name`      | { message: `string`, result: `object` } |
+| POST   | /specialization     | YES   | admin | Create One Specialization | `name`      | { message: `string`, result: `object` } |
+
+## Insurance Endpoints
 
 | METHOD | ENDPOINT       | TOKEN | ROLE  | DESCRIPTION          | POST PARAMS | RETURNS                                 |
 | ------ | -------------- | ----- | ----- | -------------------- | ----------- | --------------------------------------- |
-| GET    | /specialty     | YES   | admin | Get All specialties  |             | { message: `string`, result: `array` }  |
-| GET    | /specialty/:id | YES   | admin | Get One specialty    |             | { message: `string`, result: `object` } |
-| PUT    | /specialty/:id | YES   | admin | Update One specialty | `name`      | { message: `string`, result: `object` } |
-| POST   | /specialty     | YES   | admin | Create One specialty | `name`      | { message: `string`, result: `object` } |
+| GET    | /insurance     | YES   | admin | Get All insurances   |             | { message: `string`, result: `array` }  |
+| GET    | /insurance/:id | YES   | admin | Get One insurance    |             | { message: `string`, result: `object` } |
+| PUT    | /insurance/:id | YES   | admin | Update One insurance | `name`      | { message: `string`, result: `object` } |
+| POST   | /insurance     | YES   | admin | Create One insurance | `name`      | { message: `string`, result: `object` } |
