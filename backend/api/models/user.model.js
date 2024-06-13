@@ -9,6 +9,10 @@ const User = connection.define(
       type: DataTypes.STRING,
       allowNull: false, // campo obligatorio
     },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false, // campo obligatorio
+    },
     phone: {
       type: DataTypes.STRING,
       allowNull: true,
