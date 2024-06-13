@@ -1,22 +1,26 @@
 const Patient = require("../models/patient.model");
+const Insurance = require("../models/insurance.model");
 
 const getOnePatient = async (req, res) => {
   try {
     const patient = await Patient.findOne({
       where: { userId: req.params.userId },
+      include: {
+        model: Insurance, // EAGER LOADING. Devolvemos la info del usuario incluyendo en el mismo objeto la información del paciente que tenga relacionada
+      },
     });
 
-    if (!patient) {
+    if (patient === null) {
       res.status(404).json({
         message: "No patient found",
+        result: null,
+      });
+    } else {
+      res.status(200).json({
+        message: "Patient fetched",
         result: patient,
       });
     }
-
-    res.status(200).json({
-      message: "Patient fetched",
-      result: patient,
-    });
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -46,9 +50,10 @@ const createPatient = async (req, res) => {
 
 const updateOnePatient = async (req, res) => {
   try {
+    console.log(req.params);
     const response = await Patient.update(req.body, {
       where: {
-        id: req.params.id,
+        userId: req.params.userId,
       },
     });
 

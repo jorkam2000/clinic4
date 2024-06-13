@@ -14,6 +14,6 @@ const {
 
 router.get("/:userId", getOnePatient);
 router.post("/", createPatient);
-router.put("/:id", updateOnePatient);
+router.put("/:userId", updateOnePatient);
 
 module.exports = router;

@@ -5,7 +5,11 @@ const bcrypt = require("bcrypt");
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.findAll({
-      where: req.query, // Permitimos filtrar usuarios pasando una query desde el cliente. Si no se pasa ninguna query, devolverá a todos los usuarios
+      // Permitimos filtrar usuarios pasando una query desde el cliente. Si no se pasa ninguna query, devolverá a todos los usuarios
+      where: req.query,
+      include: {
+        model: Patient,
+      },
     });
 
     if (!users) {
@@ -61,15 +65,15 @@ const getOwnProfile = async (req, res) => {
     // TODO: Cambiar la forma de obtener el id del usuario logueado
     // const user = await User.findByPk(res.locals.user.id, {
     const user = await User.findByPk(1, {
-      // include: [
-      //   // EAGER LOADING: Devolvemos la info de contacto y todos los chistes que tenga como favoritos
-      //   {
-      //     model: ContactInfo,
-      //   },
-      //   {
-      //     model: Joke,
-      //   },
-      // ],
+      include: [
+        // EAGER LOADING: Devolvemos la info de contacto y todos los chistes que tenga como favoritos
+        {
+          model: Patient,
+        },
+        //   {
+        //     model: Joke,
+        //   },
+      ],
     });
 
     if (!user) {
