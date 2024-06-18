@@ -2,19 +2,25 @@ import { useEffect, useState } from "react"
 import { getAllDoctors } from "../../services/doctorServices"
 
 function Doctor() {
-  const [doctor, setDoctor] = useState([])
+  const [doctors, setDoctors] = useState([])
 
   useEffect(() => {
     const doctorRequest = async () => {
       const result = await getAllDoctors() 
-      setDoctor(result)
+      setDoctors(result)
     }
     doctorRequest()
   }, [])
 
-  console.log(doctor)
+  console.log(doctors)
   return (
-    <div>Doctor</div>
+    <div>
+      {
+        doctors.map((doctor) => {
+          return <h1 key={doctor.id}>{doctor.value}</h1>
+        })
+      }
+    </div>
   )
 }
 
