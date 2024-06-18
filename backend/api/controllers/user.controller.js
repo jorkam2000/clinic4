@@ -1,5 +1,10 @@
+const jwt = require("jsonwebtoken");
+
 const User = require("../models/user.model");
 const Patient = require("../models/patient.model");
+const Appointment = require("../models/appointment.model");
+const Insurance = require("../models/insurance.model");
+
 const bcrypt = require("bcrypt");
 
 const getAllUsers = async (req, res) => {
@@ -62,31 +67,37 @@ const getOneUser = async (req, res) => {
 
 const getOwnProfile = async (req, res) => {
   try {
-    // TODO: Cambiar la forma de obtener el id del usuario logueado
-    // const user = await User.findByPk(res.locals.user.id, {
-    const user = await User.findByPk(1, {
-      include: [
-        // EAGER LOADING: Devolvemos la info de contacto y todos los chistes que tenga como favoritos
-        {
-          model: Patient,
-        },
-        //   {
-        //     model: Joke,
-        //   },
-      ],
-    });
+    if (!req.headers.authorization)
+      return res.status(401).send("Token not found");
 
-    if (!user) {
-      res.status(404).json({
-        message: "No user found",
-        result: user,
-      });
-    }
+    // Comprobamos la vericidad del token
+    jwt.verify(
+      req.headers.authorization,
+      process.env.JWT_SECRET,
+      async (err, result) => {
+        if (err) return res.status(401).send("Token not valid");
 
-    res.status(200).json({
-      message: "User fetched",
-      result: user,
-    });
+        const user = await User.findByPk(result.id, {
+          include: { all: true, nested: true },
+        });
+
+        // const patient = await user.getPatient();
+        // const insurance = await patient.getInsurance();
+
+        if (!user)
+          res.status(404).json({
+            message: "No user found",
+            result: user,
+          });
+
+        // res.locals.user = user;
+        res.status(200).json({
+          message: "User fetched",
+          result: user,
+          // result: { user, patient, insurance },
+        });
+      }
+    );
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -120,6 +131,7 @@ const createUser = async (req, res) => {
 
 const updateOneUser = async (req, res) => {
   try {
+    //TODO: Asegurarse que solamente puede actualizarse el usuario a si mismo, salvo que sea un Admin
     const response = await User.update(req.body, {
       where: {
         id: req.params.id,
@@ -175,6 +187,49 @@ const deleteOneUser = async (req, res) => {
   }
 };
 
+const addAppointment = async (req, res) => {
+  try {
+    // Aquí tengo que localizar el usuario que está logueado para vincular la cita con él.
+    // Hay que utilizar los métodos autogenerados que propone Sequelize
+
+    jwt.verify(
+      req.headers.authorization,
+      process.env.JWT_SECRET,
+      async (err, result) => {
+        if (err) return res.status(401).send("Token not valid");
+
+        const user = await User.findByPk(result.id);
+
+        if (!user) {
+          res.status(404).json({ message: "No user found", result: null });
+        } else {
+          const patient = await Patient.findOne({
+            where: { userId: user.id },
+          });
+
+          if (!patient) {
+            res.status(404).json({ message: "No patient found", result: user });
+          } else {
+            req.body.patientId = patient.id;
+            const appointment = await Appointment.create(req.body);
+
+            res.status(201).json({
+              message: "Appointment created",
+              result: appointment,
+            });
+          }
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Error creating Appointment",
+      result: error,
+    });
+  }
+};
+
 module.exports = {
   getAllUsers,
   getOneUser,
@@ -182,4 +237,5 @@ module.exports = {
   createUser,
   updateOneUser,
   deleteOneUser,
+  addAppointment,
 };
