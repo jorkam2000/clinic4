@@ -115,6 +115,9 @@ const createUser = async (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, salt);
 
     const user = await User.create(req.body);
+    const patient = await Patient.create(req.body);
+
+    await user.setPatient(patient);
 
     res.status(201).json({
       message: "User created",
@@ -151,11 +154,19 @@ const updateOneUser = async (req, res) => {
       result: req.body,
     });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      message: "Error updating user",
-      result: error,
-    });
+    console.log(error.name);
+    if (error.name == "SequelizeUniqueConstraintError") {
+      res.status(500).json({
+        message: "Error de clave duplicada, usuario no actualizado",
+        result: null,
+      });
+    } else {
+      console.log(error);
+      res.status(500).json({
+        message: "Error updating user",
+        result: error,
+      });
+    }
   }
 };
 

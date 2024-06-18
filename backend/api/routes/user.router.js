@@ -19,7 +19,7 @@ const {
 
 router.get("/", checkAuth, checkAdmin, getAllUsers); // getAllUsers solo podrá ser ejecutada por un administrador, ya que hemos empleados los middlewares de checkAuth y checkAdmin
 router.get("/profile", checkAuth, getOwnProfile); // getOwnProfile requiere que el usuario esté logueado para realizar esta petición, ya que usamos el middleware de checkAuth
-router.get("/:id", checkAuth, getOneUser);
+router.get("/:id", checkAuth, checkAdmin, getOneUser);
 router.post("/", checkAuth, checkAdmin, createUser);
 router.put("/:id", checkAuth, updateOneUser);
 router.delete("/:id", checkAuth, checkAdmin, deleteOneUser);
