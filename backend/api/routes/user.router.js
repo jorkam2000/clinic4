@@ -7,19 +7,22 @@ const {
   createUser,
   updateOneUser,
   deleteOneUser,
+  addAppointment,
 } = require("../controllers/user.controller");
 
-// // Requerimos los middlewares que hemos creado para poder utilizarlo en rutas específicas
-// const {
-//   checkAuth, // Middleware para comprobar autenticación. Obligamos al usuario a estar autenticado si empleamos este middleware, y lo aprovechamos para obtener la información del perfil de dicho usuario.
-//   checkAdmin, // Middleware para proteger determinadas rutas, y que solo puedan ser ejecutadas por un usuario administrador
-// } = require("../middelwares");
+// Requerimos los middlewares.
+const {
+  checkAuth, // Obligamos que sea un usuario autenticado.
+  checkAdmin, // Revisamos que el usuario logueado sea un Administrador
+  checkDoctor, // Revisamos que el usuario logueado sea un Doctor
+} = require("../middelwares");
 
-router.get("/", getAllUsers); // getAllUsers solo podrá ser ejecutada por un administrador, ya que hemos empleados los middlewares de checkAuth y checkAdmin
-router.get("/profile", getOwnProfile); // getOwnProfile requiere que el usuario esté logueado para realizar esta petición, ya que usamos el middleware de checkAuth
-router.get("/:id", getOneUser);
-router.post("/", createUser);
-router.put("/:id", updateOneUser);
-router.delete("/:id", deleteOneUser);
+router.get("/", checkAuth, checkAdmin, getAllUsers); // getAllUsers solo podrá ser ejecutada por un administrador, ya que hemos empleados los middlewares de checkAuth y checkAdmin
+router.get("/profile", checkAuth, getOwnProfile); // getOwnProfile requiere que el usuario esté logueado para realizar esta petición, ya que usamos el middleware de checkAuth
+router.get("/:id", checkAuth, getOneUser);
+router.post("/", checkAuth, checkAdmin, createUser);
+router.put("/:id", checkAuth, updateOneUser);
+router.delete("/:id", checkAuth, checkAdmin, deleteOneUser);
+router.post("/addappointment", addAppointment);
 
 module.exports = router;
