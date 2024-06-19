@@ -8,6 +8,7 @@ const {
   updateOneUser,
   deleteOneUser,
   addAppointment,
+  confirmAppointment,
 } = require("../controllers/user.controller");
 
 // Requerimos los middlewares.
@@ -21,6 +22,7 @@ router.get("/", checkAuth, checkAdmin, getAllUsers); // getAllUsers solo podrá 
 router.get("/profile", checkAuth, getOwnProfile); // getOwnProfile requiere que el usuario esté logueado para realizar esta petición, ya que usamos el middleware de checkAuth
 router.get("/:id", checkAuth, checkAdmin, getOneUser);
 router.post("/", checkAuth, checkAdmin, createUser);
+router.put("/confirm", checkAuth, checkDoctor, confirmAppointment);
 router.put("/:id", checkAuth, updateOneUser);
 router.delete("/:id", checkAuth, checkAdmin, deleteOneUser);
 router.post("/addappointment", checkAuth, addAppointment);
