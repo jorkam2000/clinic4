@@ -19,10 +19,14 @@ const defineRelations = () => {
     through: "doctor_data", // Se generará la tabla intermedia con el nombre 'doctor_data'
     timestamps: false,
   });
+
   Specialization.belongsToMany(User, {
     through: "doctor_data",
     timestamps: false,
   });
+
+  DoctorData.hasMany(Appointment);
+  Appointment.belongsTo(DoctorData);
 };
 
 module.exports = defineRelations;
