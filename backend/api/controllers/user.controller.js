@@ -6,6 +6,7 @@ const Appointment = require("../models/appointment.model");
 const Insurance = require("../models/insurance.model");
 
 const bcrypt = require("bcrypt");
+const DoctorData = require("../models/doctor_data.model");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -50,12 +51,62 @@ const getOneUser = async (req, res) => {
         message: "No user found",
         result: user,
       });
+    } else {
+      res.status(200).json({
+        message: "User fetched",
+        result: user,
+      });
     }
-
-    res.status(200).json({
-      message: "User fetched",
-      result: user,
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Error getting one user",
+      result: error,
     });
+  }
+};
+
+const getIdFromToken = async (req) => {
+  try {
+    let response = null;
+
+    jwt.verify(
+      req.headers.authorization,
+      process.env.JWT_SECRET,
+      async (err, result) => {
+        if (err) {
+          return res.status(401).send("Token not valid");
+        } else {
+          response = result.id;
+        }
+      }
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Error getting one user",
+      result: error,
+    });
+  }
+};
+
+const getRoleFromToken = async (req) => {
+  try {
+    let response = null;
+
+    jwt.verify(
+      req.headers.authorization,
+      process.env.JWT_SECRET,
+      async (err, result) => {
+        if (err) {
+          return res.status(401).send("Token not valid");
+        } else {
+          response = result.role;
+        }
+      }
+    );
+    return response;
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -70,36 +121,35 @@ const getOwnProfile = async (req, res) => {
     if (!req.headers.authorization)
       return res.status(401).send("Token not found");
 
-    // Comprobamos la vericidad del token
-    jwt.verify(
-      req.headers.authorization,
-      process.env.JWT_SECRET,
-      async (err, result) => {
-        if (err) return res.status(401).send("Token not valid");
+    const userID = await getIdFromToken(req);
 
-        const user = await User.findByPk(result.id, {
-          include: { all: true, nested: true },
-        });
+    if (userID != null) {
+      const user = await User.findByPk(userID, {
+        include: { all: true, nested: true },
+      });
 
-        // const patient = await user.getPatient();
-        // const insurance = await patient.getInsurance();
+      // const patient = await user.getPatient();
+      // const insurance = await patient.getInsurance();
 
-        if (!user)
-          res.status(404).json({
-            message: "No user found",
-            result: user,
-          });
-
-        // res.locals.user = user;
-        res.status(200).json({
-          message: "User fetched",
+      if (!user)
+        res.status(404).json({
+          message: "No user found",
           result: user,
-          // result: { user, patient, insurance },
         });
-      }
-    );
+
+      // res.locals.user = user;
+      res.status(200).json({
+        message: "User fetched",
+        result: user,
+        // result: { user, patient, insurance },
+      });
+    } else {
+      res.status(500).json({
+        message: "userId not valid",
+        result: error,
+      });
+    }
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       message: "Error getting one user",
       result: error,
@@ -134,25 +184,38 @@ const createUser = async (req, res) => {
 
 const updateOneUser = async (req, res) => {
   try {
-    //TODO: Asegurarse que solamente puede actualizarse el usuario a si mismo, salvo que sea un Admin
-    const response = await User.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
+    const userID = await getIdFromToken(req);
+    console.log(userID);
 
-    // La función de update y destroy de sequelize devuelve un array con un 0 si no ha encontrado al usuario o no ha hecho cambios, y un array con un 1 si ha ido todo bien
-    if (response === 0) {
-      res.status(404).json({
-        message: "No user found",
-        result: response,
+    const role = await getRoleFromToken(req);
+    console.log(role);
+
+    if (role == "admin" || userID == req.params.id) {
+      // El usuario logueado es un usuario administrador o es el propio usuario quien solicita la actualización
+      const response = await User.update(req.body, {
+        where: {
+          id: req.params.id,
+        },
+      });
+
+      // La función de update y destroy de sequelize devuelve un array con un 0 si no ha encontrado al usuario o no ha hecho cambios, y un array con un 1 si ha ido todo bien
+      if (response === 0) {
+        res.status(404).json({
+          message: "No user found",
+          result: response,
+        });
+      }
+
+      res.status(200).json({
+        message: "User updated",
+        result: req.body,
+      });
+    } else {
+      res.status(500).json({
+        message: "User cannot update other user",
+        result: null,
       });
     }
-
-    res.status(200).json({
-      message: "User updated",
-      result: req.body,
-    });
   } catch (error) {
     console.log(error.name);
     if (error.name == "SequelizeUniqueConstraintError") {
@@ -203,35 +266,55 @@ const addAppointment = async (req, res) => {
     // Aquí tengo que localizar el usuario que está logueado para vincular la cita con él.
     // Hay que utilizar los métodos autogenerados que propone Sequelize
 
-    jwt.verify(
-      req.headers.authorization,
-      process.env.JWT_SECRET,
-      async (err, result) => {
-        if (err) return res.status(401).send("Token not valid");
+    if (!req.headers.authorization)
+      return res.status(401).send("Token not found");
 
-        const user = await User.findByPk(result.id);
+    const userID = await getIdFromToken(req);
 
-        if (!user) {
-          res.status(404).json({ message: "No user found", result: null });
+    if (userID != null) {
+      const user = await User.findByPk(userID);
+
+      if (!user) {
+        res.status(404).json({ message: "No user found", result: null });
+      } else {
+        const patient = await Patient.findOne({
+          where: { userId: user.id },
+        });
+
+        if (!patient) {
+          res.status(404).json({ message: "No patient found", result: user });
         } else {
-          const patient = await Patient.findOne({
-            where: { userId: user.id },
+          console.log(req.body.doctorId);
+          console.log(req.body.specializationId);
+
+          const doctorData = await DoctorData.findOne({
+            where: {
+              userId: req.body.doctorId,
+              specializationId: req.body.specializationId,
+            },
           });
 
-          if (!patient) {
-            res.status(404).json({ message: "No patient found", result: user });
-          } else {
+          if (doctorData != null) {
             req.body.patientId = patient.id;
+            req.body.doctorDatumId = doctorData.id;
+
             const appointment = await Appointment.create(req.body);
+
+            patient.addAppointment(appointment);
 
             res.status(201).json({
               message: "Appointment created",
               result: appointment,
             });
+          } else {
+            res.status(500).json({
+              message: "Error creating Appointment, no specialization found",
+              result: null,
+            });
           }
         }
       }
-    );
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({

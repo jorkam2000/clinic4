@@ -23,6 +23,6 @@ router.get("/:id", checkAuth, checkAdmin, getOneUser);
 router.post("/", checkAuth, checkAdmin, createUser);
 router.put("/:id", checkAuth, updateOneUser);
 router.delete("/:id", checkAuth, checkAdmin, deleteOneUser);
-router.post("/addappointment", addAppointment);
+router.post("/addappointment", checkAuth, addAppointment);
 
 module.exports = router;
