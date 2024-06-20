@@ -1,0 +1,181 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+a {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #242424;
+}
+
+#page {
+    position: sticky;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#sideBar {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    min-width: 150px;
+    margin-right: 20px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#sideBar>div {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+#sideBar>div>img {
+    width: 100%;
+}
+
+#sideBar>div>a {
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#sideBar>p {
+    margin-top: auto;
+    padding: 10px 0;
+    text-align: center;
+}
+
+#main {
+    max-width: 1000px;
+    min-width: 20px;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+#component {
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.caption {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.table-container {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tfoot {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    border-top: 2px solid #ddd;
+    background-color: #f2f2f2;
+}
+
+tfoot p {
+    margin: 0 10px 0 0;
+}
+
+.navigationButton {
+    padding: 5px 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.navigationButton:hover {
+    transition: ease-in-out;
+    color: coral;
+}
+
+tr:hover,
+a:hover {
+    background-color: #eeeeee;
+    border-radius: 4px;
+}
+
+a:hover,
+img:hover {
+    font-weight: bold;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    border-top: 2px solid #ddd;
+    background-color: #f2f2f2;
+    border-radius: 0 0 10px 10px;
+}
+
+.footer-container p {
+    margin: 0 10px 0 0;
+}
+/* Sticky columns */
+thead th:first-child, tbody td:first-child,
+thead th:last-child, tbody td:last-child {
+    position: sticky;
+    background: #ebebeb; /* Same background as the table */
+    z-index: 1;
+}
+
+thead th:first-child, tbody td:first-child {
+    left: 0;
+    z-index: 2; /* Higher than the other sticky cells */
+}
+
+thead th:last-child, tbody td:last-child {
+    right: 0;
+    z-index: 2; /* Higher than the other sticky cells */
+}
