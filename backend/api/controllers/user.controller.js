@@ -165,15 +165,19 @@ const createUser = async (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, salt);
 
     const user = await User.create(req.body);
-    const patient = await Patient.create(req.body);
+    const role = req.body.role ?? "user";
 
-    await user.setPatient(patient);
+    if (role == "user") {
+      const patient = await Patient.create(req.body);
+      await user.setPatient(patient);
+    }
 
     res.status(201).json({
       message: "User created",
       result: user,
     });
   } catch (error) {
+    // SequelizeUniqueConstraintError
     console.log(error);
     res.status(500).json({
       message: "Error creating user",
@@ -185,10 +189,7 @@ const createUser = async (req, res) => {
 const updateOneUser = async (req, res) => {
   try {
     const userID = await getIdFromToken(req);
-    console.log(userID);
-
     const role = await getRoleFromToken(req);
-    console.log(role);
 
     if (role == "admin" || userID == req.params.id) {
       // El usuario logueado es un usuario administrador o es el propio usuario quien solicita la actualización
@@ -357,6 +358,38 @@ const confirmAppointment = async (req, res) => {
   }
 };
 
+const getAllVisits = async (req, res) => {
+  try {
+    const doctorId = await getIdFromToken(req);
+    console.log(doctorId);
+
+    const visits = await DoctorData.findAll({
+      where: { userId: doctorId },
+      include: { all: true, nested: true },
+    });
+
+    console.log(visits);
+
+    if (!visits) {
+      res.status(404).json({
+        message: "No visits found",
+        result: null,
+      });
+    } else {
+      res.status(200).json({
+        message: "All visits fetched",
+        result: visits,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Error getting all users",
+      result: error,
+    });
+  }
+};
+
 module.exports = {
   getAllUsers,
   getOneUser,
@@ -366,4 +399,5 @@ module.exports = {
   deleteOneUser,
   addAppointment,
   confirmAppointment,
+  getAllVisits,
 };
