@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/frontend/main.css">
+</head>
+
+<body>
+    <div id="page">
+        <aside id="sideBar">
+            <div>
+                <img src="./src/logo_icon.png" alt="">
+            </div>
+            <div>
+                <a href="">My profile</a>
+                <a href="">Users</a>
+                <a href="">Specialities</a>
+                <a href="">Insurances</a>
+            </div>
+            <p> Clinic4 2024 ©️ </p>
+        </aside>
+        <div id="main">
+            <header id="header">
+                <button class="navigationButton" id="backArrowHeader">&#8592;</button>
+                <h1>Users</h1>
+                <div id="statusHeader">
+                    <p>Status: </p>
+                    <p id="statusLabel"> confirmed </p>
+                </div>
+                
+            </header>
+            <div id="mainComponents">
+                    <table id="tableComponent">
+        
+                        <caption id="caption">Doctors list
+                            <input type="text" id="searchInput" placeholder="Search...">
+                            <button id="createinTableButton" style="float: right;"> New </button>
+                        </caption>
+                    
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>First name</th>
+                                        <th>Last name</th>
+                                        <th>Email</th>
+                                        <th>Speciality</th>
+                                        <th>Creation date</th>
+                                        <th>Appointments</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Manuel</td>
+                                        <td>Gimenez</td>
+                                        <td>manuel@test.com</td>
+                                        <td>Cardiología</td>
+                                        <td>23.05.2023</td>
+                                        <td>435</td>
+                                        <td><button class="navigationButton" id="navigationForward">&#x2192;</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pepito</td>
+                                        <td>Grillo</td>
+                                        <td>pepito@test.com</td>
+                                        <td>Cardiología</td>
+                                        <td>29.05.2024</td>
+                                        <td>41</td>
+                                        <td><button class="navigationButton" id="navigationForward">&#x2192;</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Silvia</td>
+                                        <td>Ramirez</td>
+                                        <td>silvia@test.com</td>
+                                        <td>Medicina interna, Oftalmología, Pediatría</td>
+                                        <td>20.05.2024</td>
+                                        <td>65</td>
+                                        <td><button class="navigationButton" id="navigationForward">&#x2192;</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gonzalo</td>
+                                        <td>Sapo</td>
+                                        <td>sapogon@test.com</td>
+                                        <td>Traumatología</td>
+                                        <td>23.05.2024</td>
+                                        <td>435</td>
+                                        <td><button class="navigationButton" id="navigationForward">&#x2192;</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Manuel</td>
+                                        <td>Gimenez</td>
+                                        <td>manuel@test.com</td>
+                                        <td>Cardiología</td>
+                                        <td>23.05.2023</td>
+                                        <td>435</td>
+                                        <td><button class="navigationButton" id="navigationForward">&#x2192;</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pepito</td>
+                                        <td>Grillo</td>
+                                        <td>pepito@test.com</td>
+                                        <td>Cardiología</td>
+                                        <td>29.05.2024</td>
+                                        <td>41</td>
+                                        <td><button class="navigationButton" id="navigationForward">&#x2192;</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Silvia</td>
+                                        <td>Ramirez</td>
+                                        <td>silvia@test.com</td>
+                                        <td>Medicina interna, Oftalmología, Pediatría</td>
+                                        <td>20.05.2024</td>
+                                        <td>65</td>
+                                        <td><button class="navigationButton" id="navigationForward">&#x2192;</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gonzalo</td>
+                                        <td>Sapo</td>
+                                        <td>sapogon@test.com</td>
+                                        <td>Traumatología</td>
+                                        <td>23.05.2024</td>
+                                        <td>435</td>
+                                        <td><button class="navigationButton" id="navigationForward">&#x2192;</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Manuel</td>
+                                        <td>Gimenez</td>
+                                        <td>manuel@test.com</td>
+                                        <td>Cardiología</td>
+                                        <td>23.05.2023</td>
+                                        <td>435</td>
+                                        <td><button class="navigationButton" id="navigationForward">&#x2192;</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pepito</td>
+                                        <td>Grillo</td>
+                                        <td>pepito@test.com</td>
+                                        <td>Cardiología</td>
+                                        <td>29.05.2024</td>
+                                        <td>41</td>
+                                        <td><button class="navigationButton" id="navigationForward">&#x2192;</button></td>
+                                    </tr>
+                    
+                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="footer-container">
+                            <button class="navigationButton" id="tablePaginationBack">&#8592;</button>
+                            <p>1 of 3</p>
+                            <button class="navigationButton" id="tablePaginationForward">&#x2192;</button>
+                        </div>
+                    </table>
+            
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
