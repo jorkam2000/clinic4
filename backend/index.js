@@ -2,7 +2,7 @@ require("dotenv").config(); // Dotenv para poder emplear variables de entorno
 
 const express = require("express");
 const morgan = require("morgan");
-
+const cors = require('cors');
 const { checkDB, syncModels } = require("./database");
 const defineRelations = require("./database/relations");
 
@@ -18,6 +18,7 @@ const startDB = async () => {
 const router = require("./api/routes"); // Instancia del router principal, alojado en /api/routes/index.js
 
 const app = express();
+app.use(cors());
 app.use(express.json()); // Le damos la capacidad a nuestra api de traducir los JSON que reciba en las peticiones a un objeto de javascript
 app.use(morgan("dev"));
 

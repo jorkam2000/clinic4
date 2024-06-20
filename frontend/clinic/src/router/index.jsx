@@ -24,10 +24,26 @@ const router = createBrowserRouter([
             },
             {
                 path: '/signup',
+                loader: () => {
+                    if(localStorage.getItem('token')) {
+                        return redirect('/login')
+                    }
+                    else {
+                        return null
+                    }
+                },
                 element: <SignUp />
             },
             {
                 path: '/login',
+                loader: () => {
+                    if(localStorage.getItem('token')) {
+                        return redirect('/profile')
+                    }
+                    else {
+                        return null
+                    }
+                },
                 element: <Login />
             },
             {
