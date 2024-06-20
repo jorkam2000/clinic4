@@ -8,10 +8,12 @@ const {
   deleteOneSpecialization,
 } = require("../controllers/specialization.controller");
 
-router.get("/", getAllSpecializations);
-router.get("/:id", getOneSpecialization);
-router.post("/", createSpecialization);
-router.put("/:id", updateOneSpecialization);
-router.delete("/:id", deleteOneSpecialization);
+const { checkAuth, checkAdmin } = require("../middelwares");
+
+router.get("/", checkAuth, getAllSpecializations);
+router.get("/:id", checkAuth, getOneSpecialization);
+router.post("/", checkAuth, checkAdmin, createSpecialization);
+router.put("/:id", checkAuth, checkAdmin, updateOneSpecialization);
+router.delete("/:id", checkAuth, checkAdmin, deleteOneSpecialization);
 
 module.exports = router;
