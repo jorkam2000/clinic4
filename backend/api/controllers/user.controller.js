@@ -360,25 +360,27 @@ const confirmAppointment = async (req, res) => {
 
 const getAllVisits = async (req, res) => {
   try {
-    const users = await User.findAll({
-      // Permitimos filtrar usuarios pasando una query desde el cliente. Si no se pasa ninguna query, devolverá a todos los usuarios
-      where: req.query,
-      include: {
-        model: Patient,
-      },
+    const doctorId = await getIdFromToken(req);
+    console.log(doctorId);
+
+    const visits = await DoctorData.findAll({
+      where: { userId: doctorId },
+      include: { all: true, nested: true },
     });
 
-    if (!users) {
+    console.log(visits);
+
+    if (!visits) {
       res.status(404).json({
-        message: "No users found",
-        result: users,
+        message: "No visits found",
+        result: null,
+      });
+    } else {
+      res.status(200).json({
+        message: "All visits fetched",
+        result: visits,
       });
     }
-
-    res.status(200).json({
-      message: "All Users fetched",
-      result: users,
-    });
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -397,4 +399,5 @@ module.exports = {
   deleteOneUser,
   addAppointment,
   confirmAppointment,
+  getAllVisits,
 };

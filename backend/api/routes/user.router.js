@@ -19,6 +19,8 @@ const {
   checkDoctor, // Revisamos que el usuario logueado sea un Doctor
 } = require("../middelwares");
 
+// Los doctores pueden obtener todas sus visitas
+router.get("/visits", checkAuth, checkDoctor, getAllVisits);
 // getAllUsers solo podrá ser ejecutada por un administrador, ya que hemos empleados los middlewares de checkAuth y checkAdmin
 router.get("/", checkAuth, checkAdmin, getAllUsers);
 // getOwnProfile requiere que el usuario esté logueado para realizar esta petición, ya que usamos el middleware de checkAuth
@@ -35,8 +37,5 @@ router.put("/:id", checkAuth, updateOneUser);
 router.delete("/:id", checkAuth, checkAdmin, deleteOneUser);
 // Los usuarios pueden añadir citas que deben ser confirmadas posteriormente por el doctor
 router.post("/addappointment", checkAuth, addAppointment);
-
-// Los doctores pueden obtener todas sus visitas
-router.get("/visits", checkAuth, checkDoctor, getAllVisits);
 
 module.exports = router;
