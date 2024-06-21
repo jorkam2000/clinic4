@@ -28,7 +28,7 @@ export default function Header() {
           </Link>
           {localStorage.getItem('token') ? (
             <button onClick={handleLogout}>Logout</button>
-          ) : (
+          ) : ( 
             <Box>
               <Link to="/login">
                 <Button color="inherit">Login</Button>

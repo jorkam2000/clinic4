@@ -18,7 +18,7 @@ export default function ProfileCard({ userInfo} ) {
           </Avatar>
         }
        
-        title={userInfo.name}
+        title={`${userInfo.name} ${userInfo.lastName}  ${userInfo.role}`}
         subheader={userInfo.email}
       />
       

@@ -2,6 +2,7 @@ import { getUserProfile } from "../../services/userService"
 import { useState, useEffect } from "react"
 import ProfileCard from "../../components/ProfileCard/ProfileCard"
 import { CircularProgress } from "@mui/material"
+import AdminPanel from "../../components/AdminPanel/AdminPanel"
 
 
 function Profile() {
@@ -23,7 +24,7 @@ function Profile() {
         userProfile !== null ? <ProfileCard userInfo={userProfile}/> : <CircularProgress />
       }
       {
-        localStorage.getItem('role') 
+        userProfile?.role === 'admin' ? <AdminPanel /> : 'Loading'
       }
       {/*<ProfileCard userInfo={userProfile}/>*/}
     </div>
