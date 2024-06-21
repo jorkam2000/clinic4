@@ -22,6 +22,9 @@ function Profile() {
       {
         userProfile !== null ? <ProfileCard userInfo={userProfile}/> : <CircularProgress />
       }
+      {
+        localStorage.getItem('role') 
+      }
       {/*<ProfileCard userInfo={userProfile}/>*/}
     </div>
   )
