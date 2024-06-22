@@ -11,7 +11,7 @@ function Input(labelName){
     if (labelName === 'Phone'){}
     return (
         <div>
-            <label for={id}>{labeName}</label>
+            <label for={id}>{labelName}</label>
             <input class='inputCorrect' type={typeV} id={id} name={labelName} placeholder="----------"></input>
         </div>
     )

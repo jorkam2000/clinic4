@@ -1,0 +1,41 @@
+.commonBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 80vw;
+    margin: 0;
+}
+
+.titleSection {
+    font-weight: bold;
+}
+
+.inputSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 95%;
+}
+
+.inputSection div:nth-child(-n+4) {
+    grid-column: 1;
+}
+
+.inputSection div:nth-child(n+5) {
+    grid-column: 2;
+}
+
+.buttonSection {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+    border: 1px solid #ccc; /* Para visualizar el contenedor */
+    padding: 10px;
+}
+
+.button {
+    margin-left: 10px;
+}
+
+
