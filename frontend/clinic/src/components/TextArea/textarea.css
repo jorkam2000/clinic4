@@ -1,0 +1,19 @@
+
+
+textarea {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    resize: vertical; /* Permite cambiar el tamaño verticalmente */
+    max-width: 876px;
+    height: 100px;
+    top: 22px;
+    gap: 0px;
+    border-radius: 4px 0px 0px 0px;
+    border: 1px 0px 0px 0px;
+    border: 1px solid #000000;
+    opacity: 0px;
+    background: rgba(0,0,0,0);
+}
