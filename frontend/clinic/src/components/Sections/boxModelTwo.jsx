@@ -1,8 +1,9 @@
 import React from 'react';
-import './commonBox.css';
-import button from '../Independents/Button/buttons';
+import './boxModelTwo.css';
+import './commonBox.css'
 
-function commonBox(title,inputElements,buttonType){
+
+function boxModel(title,firstFour,lastThree){
     let firstB='Cancel';
     let secondB;
     if (buttonType==='Create'){secondB='Create'}
@@ -10,8 +11,8 @@ function commonBox(title,inputElements,buttonType){
     return (
         <div class='commonBox'>
             <div class='titleSection'>{title}</div>
-            <div class='inputSection'>{inputElements}</div>
-            <div class='buttonSection'>{[button(false,firstB),button(true,secondB)]}</div>
+            <div class='inputSectionMTwo'>{firstFour}</div>
+            <div class='largeInputSection'>{lastThree}</div>
         </div>
     )
 }

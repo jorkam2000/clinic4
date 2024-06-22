@@ -1,0 +1,32 @@
+.inputSectionM2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px; /* Espacio entre los divs */
+    width: 80%;
+    border: 1px solid #ccc; /* Para visualizar el contenedor */
+    padding: 10px;
+}
+
+.inputSectionM2 div {
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.largeInputSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px; /* Ajusta este valor según tus necesidades */
+    width: 200px; /* Ajusta este valor según tus necesidades */
+    border: 1px solid #ccc; /* Para visualizar el contenedor */
+    padding: 10px;
+}
+
+.largeInputSection div {
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
