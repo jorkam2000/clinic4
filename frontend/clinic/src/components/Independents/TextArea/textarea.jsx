@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './textarea.css';
 
 function textAreaInput(){
     return (

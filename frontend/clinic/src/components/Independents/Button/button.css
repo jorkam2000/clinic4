@@ -1,0 +1,39 @@
+button {
+    border: none;
+    color: #F3F3F3;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    position: relative; /* Necesario para el efecto degradado */
+    overflow: hidden; /* Ocultar el degradado que se desborda */
+    z-index: 1; /* Asegurar que el texto esté sobre el degradado */
+}
+
+.mainB {
+    background-color: #2F2F2F;
+}
+.secB {
+    background-color: #B4B4B4;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle closest-side, rgba(255,255,255,0.5), transparent); /* Degradado radial */
+    transition: transform 0.3s ease;
+    z-index: -1; /* Situarlo detrás del contenido del botón */
+    transform: translate(-50%, -50%) scale(0); /* Escala inicial 0 para el efecto de aparición */
+}
+
+button:hover::before {
+    transform: translate(-50%, -50%) scale(1); /* Escala 1 al hacer hover */
+}

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './Input.css';
 
 function Input(labelName){
     let typeV;
