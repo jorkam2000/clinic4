@@ -1,0 +1,23 @@
+.mainPage {
+    display: flex;
+    height: 80vh; /* Ajusta este valor según tus necesidades */
+    width: 80%; /* Ajusta este valor según tus necesidades */
+    border: 1px solid #ccc; /* Para visualizar el contenedor */
+}
+
+.column {
+    height: 100%; /* Ocupa toda la altura del contenedor padre */
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc; /* Para visualizar las columnas */
+    box-sizing: border-box;
+}
+
+.leftSide {
+    flex: 1; /* 1/4 del contenedor padre */
+}
+
+.rightSide {
+    flex: 3; /* 3/4 del contenedor padre */
+    background-color: lightblue; /* Color de fondo para mejor visualización */
+}
