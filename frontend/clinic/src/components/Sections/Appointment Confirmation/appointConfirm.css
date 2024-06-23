@@ -1,0 +1,43 @@
+.inputSectionAppDet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px; /* Espacio entre los divs */
+    width: 80%;
+    border: 1px solid #ccc; /* Para visualizar el contenedor */
+    padding: 10px;
+    height: 300px; /* Ajusta este valor según tus necesidades */
+}
+
+.inputSectionAppDet div {
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.inputSectionAppDet div:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.inputSectionAppDet div:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.inputSectionAppDet div:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.buttonSection {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+    border: 1px solid #ccc; /* Para visualizar el contenedor */
+    padding: 10px;
+}
+
+.button {
+    margin-left: 10px;
+}

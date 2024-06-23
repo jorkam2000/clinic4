@@ -1,11 +1,11 @@
 import React from 'react';
 import './textarea.css';
 
-function textAreaInput(){
+function textAreaInput(title){
     return (
         <div>
-            <label for="Observaciones">Comentarios de observación:</label>
-            <textarea type="text" id="nombre" name="Observaciones" placeholder="Observaciones" rows="5">
+            <label for={title}>{title}</label>
+            <textarea type="text" id="nombre" name={title} placeholder="Observaciones" rows="5">
             </textarea>
         </div>
     )
