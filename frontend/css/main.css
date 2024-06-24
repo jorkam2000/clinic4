@@ -1,0 +1,149 @@
+body {
+    position: relative;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    background-color: #f0f0f0;
+}
+
+a {
+    color: #48AB93;
+}
+
+.primaryButton,
+#createinTableButton {
+    height: 32px;
+    border-width: 0;
+    background-color: #48AB93;
+    border-radius: 4px;
+    padding: 2px 10px;
+    color: aliceblue;
+    font-size: large;
+}
+
+.primaryButton:hover,
+#createinTableButton:hover {
+    background-color: #242424;
+}
+
+
+
+#page {
+    position: sticky;
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    min-width: 650px;
+    max-width: 1200px;
+    min-height: 600px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+}
+#sideBar, #header, #mainComponents{
+    position: sticky;
+    background-color: #fcfcfc7f;
+    top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+#sideBar {
+    display: flex;
+    position: sticky;
+    flex-direction: column;
+    width: 150px;
+    min-width: 150px;
+    margin-right: 20px;
+    padding: 20px;
+    height: fit-content;
+}
+
+#sideBar>div {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+#sideBar>div>img {
+    width: 100%;
+}
+
+#sideBar>div>a {
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#sideBar>p {
+    margin-top: auto;
+    padding: 10px 0;
+    text-align: center;
+}
+
+#main {
+    position: sticky;
+    width: 100%;
+    max-width: 1000px;
+    min-width: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#statusHeader {
+    margin-left: auto;
+    color: #7c7c7c;
+}
+
+#statusHeader>p {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#mainComponents {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.navigationButton {
+    padding: 5px 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.navigationButton:hover {
+    color: #48AB93;
+}
+
+
+
+/* Hovers */
+tr:hover,
+a:hover {
+    background-color: #48AB93;
+    border-radius: 4px;
+    color: #242424;
+}
+
+a:hover,
+img:hover {
+    font-weight: bold;
+}
