@@ -9,7 +9,7 @@ import '../../Independents/Button/buttons';
 
 
 
-function profilePage(initialButton){
+function profilePage(){
     function backToEdit(){
         changer([button(true,'Edit',editProcess)])
     }
