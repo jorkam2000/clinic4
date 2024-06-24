@@ -7,10 +7,10 @@ import '../../Independents/Input/Input';
 
 
 
-function newDetails(){
+function newDetails(buttons){
     return (
         <div>
-            {commonBox('Profile details',[Input('First Name'),Input('Email'),Input('Phone'),Input('Last name'),Input('Password')],'Edit')}
+            {commonBox('Profile details',[Input('First Name'),Input('Email'),Input('Phone'),Input('Last name'),Input('Password')],buttons)}
         </div>
     )
 }

@@ -1,13 +1,15 @@
 import React from 'react'
 import './button.css'
 
-function button(main,buttonText){
+
+
+function button(main,buttonText,onClickF){
     let position;
     if (main){position='mainB'}
     else {position='secB'}
     return (
         <div>
-            <button class={position} id="miBoton">{buttonText}</button>
+            <button class={position} onClick={onClickF} id="miBoton">{buttonText}</button>
         </div>
     )
 }

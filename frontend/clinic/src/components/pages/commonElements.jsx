@@ -2,12 +2,12 @@
 import React from 'react';
 import './commonElements.css'
 
-function commonElementsPage(notCommonElements){
+function commonElementsPage(topElement,notCommonElements){
     return (
         <div class='mainBox'>
             <div class='column leftSide'></div>
             <div class='column rightSide'>
-                {notCommonElements}
+                {[topElement,notCommonElements]}
             </div>
         </div>
     )

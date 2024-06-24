@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../Independents/Input/Input'
-import '../../Independents/Button/buttons'
+import '../../Independents/Input/Input';
+import '../../Independents/Button/buttons';
 
 
 function appointConfirm(){

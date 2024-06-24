@@ -7,10 +7,10 @@ import '../../Independents/Input/Input';
 
 
 
-function newSpeciality(){
+function newSpeciality(buttons){
     return (
         <div>
-            {commonBox('New speciality details',[Input('Name'),Input('Doctors assigned')],'Create')}
+            {commonBox('New speciality details',[Input('Name'),Input('Doctors assigned')],buttons)}
         </div>
     )
 }
