@@ -50,6 +50,7 @@ function checkDoctor(req, res, next) {
   // Lo haremos accediendo a res.locals y comprobaremos el role.
   // Si no es Doctor, rechazamos la petición y no permitimos continuar
 
+  console.log(res.locals.user);
   if (res.locals.user.role !== "doctor") {
     return res.status(401).send("User not authorized");
   }

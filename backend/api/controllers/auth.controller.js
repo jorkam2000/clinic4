@@ -15,7 +15,7 @@ const signup = async (req, res) => {
     const user = await User.create(req.body);
     const patient = await Patient.create(req.body);
 
-    await user.setPatient(patient); // add contactInfo1 to student1
+    await user.setPatient(patient);
 
     // Generamos un token para devolver al cliente, así el usuario ya será capaz de realizar peticiones que reguieran estar logueado
     const token = jwt.sign(
