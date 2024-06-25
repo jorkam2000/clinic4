@@ -1,9 +1,9 @@
 import React from 'react';
 
-import '../../Sections/Profile Details/profileDetails'
+import '../../Sections/ProfileDetails/profileDetails'
 import '../commonElements'
 import commonElementsPage from '../commonElements';
-import '../../Sections/Profile Details/profileDetails';
+import '../../Sections/ProfileDetails/profileDetails';
 import '../../Independents/Button/buttons';
 
 

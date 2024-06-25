@@ -8,12 +8,12 @@ import '@fontsource/roboto/700.css';
 import router from './router/index';
 import { RouterProvider } from 'react-router-dom';
 
-import './components/pages/My profile/myProfileEdit';
+import './components/pages/MyProfile/myProfileEdit';
 
 
-//<RouterProvider router={router}/>
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <profilePage/>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
