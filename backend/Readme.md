@@ -4,6 +4,11 @@ ALL ROUTES START WITH /api
 
 ![](dbdiagram.png)
 
+### Production
+
+The URL in production is: https://clinic4.onrender.com
+The database is uploaded in aiven
+
 ### Authentication Endpoints
 
 The Authentication flow for the application is:
