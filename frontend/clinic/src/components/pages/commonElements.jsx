@@ -5,6 +5,7 @@ import Sidebar from '../Independents/Sidebar/sidebar';
 import Header from '../Independents/Header/header';
 
 function CommonElementsPage({ title, notCommonElements }) {
+
     return (
         <div className='mainBox'>
             <div className='column leftSide' key='LeftSide_CEP'>

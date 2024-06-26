@@ -7,35 +7,45 @@ import Button from '../../Independents/Button/buttons';
 
 
 function ProfilePage() {
+    const [buttons, setButtons] = useState([
+        <Button 
+            key="edit" 
+            isPrimary={true} 
+            text='Edit' 
+            onClick={editProcess}
+        />
+    ]);
+
     function backToEdit() {
-        changer([<Button key="edit" isPrimary={true} text='Edit' onClick={editProcess} />]);
+        setButtons([
+            <Button key="edit" isPrimary={true} text='Edit' onClick={editProcess} />
+        ]);
     }
 
     function saveProcess() {
         /*Falta añadir lo que se haga para guardar en el backend*/
-        changer([<Button key="edit" isPrimary={true} text='Edit' onClick={editProcess} />]);
+        setButtons([
+            <Button key="edit" isPrimary={true} text='Edit' onClick={editProcess} />
+        ]);
     }
 
     function editProcess() {
-        changer([
+        setButtons([
             <Button key="cancel" isPrimary={false} text='Cancel' onClick={backToEdit} />,
             <Button key="save" isPrimary={true} text='Save' onClick={saveProcess} />
         ]);
     }
-
-    const [initial, changer] = useState([
-        <Button key="edit" isPrimary={true} text='Edit' onClick={editProcess} />
-    ]);
-
+    
     return (
         <CommonElementsPage
             title='Profile details'
             notCommonElements={[
-                <NewDetails key="details" buttons={initial} />
+                <NewDetails key="details" buttons={buttons} />
             ]}
         />
     );
 }
+
 
 export default ProfilePage;
 
