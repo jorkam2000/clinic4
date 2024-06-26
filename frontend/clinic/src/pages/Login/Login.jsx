@@ -46,7 +46,6 @@ function Login() {
   }
   const avatarStyle = { backgroundColor: '#1bbd7e' }
   const btnstyle = { margin: '8px 0' }
-  console.log(email)
 
   return (
     <Grid>

@@ -1,9 +1,8 @@
-import { getUserProfile } from "../../services/userService"
-import { useState, useEffect } from "react"
-import ProfileCard from "../../components/ProfileCard/ProfileCard"
-import { CircularProgress } from "@mui/material"
-import AdminPanel from "../../components/AdminPanel/AdminPanel"
-
+import { getUserProfile } from '../../services/userService'
+import { useState, useEffect } from 'react'
+import ProfileCard from '../../components/ProfileCard/ProfileCard'
+import { CircularProgress } from '@mui/material'
+import AdminPanel from '../../components/AdminPanel/AdminPanel'
 
 function Profile() {
   const [userProfile, setUserProfile] = useState(null)
@@ -16,16 +15,15 @@ function Profile() {
 
     getUserDataProfile()
   }, [])
-  //console.log(userProfile)
 
   return (
     <div>
-      {
-        userProfile !== null ? <ProfileCard userInfo={userProfile}/> : <CircularProgress />
-      }
-      {
-        userProfile?.role === 'admin' ? <AdminPanel /> : 'Loading'
-      }
+      {userProfile !== null ? (
+        <ProfileCard userInfo={userProfile} />
+      ) : (
+        <CircularProgress />
+      )}
+      {userProfile?.role === 'admin' ? <AdminPanel /> : 'Loading'}
       {/*<ProfileCard userInfo={userProfile}/>*/}
     </div>
   )
