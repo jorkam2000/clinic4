@@ -1,7 +1,7 @@
 import React from 'react';
 import './commonBox.css';
 
-
+/*
 function CommonBox({title,inputElements,buttons}){
     return (
         <div className='commonBox'>
@@ -11,7 +11,7 @@ function CommonBox({title,inputElements,buttons}){
         </div>
     )
 }
-/*
+*/
 function CommonBox({ title, inputElements, buttons }) {
     return (
         <div className='commonBox'>
@@ -33,5 +33,5 @@ function CommonBox({ title, inputElements, buttons }) {
         </div>
     );
 }
-*/
+
 export default CommonBox;

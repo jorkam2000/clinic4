@@ -32,6 +32,7 @@
     width: 80%;
     border: 1px solid #ccc; /* Para visualizar el contenedor */
     padding: 10px;
+    background-color: red;
 }
 
 .button {
