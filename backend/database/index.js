@@ -1,15 +1,20 @@
 const { Sequelize } = require("sequelize");
 
-const connection = new Sequelize(
-  process.env.DB_DATABASE,
-  process.env.DB_USERNAME,
-  process.env.DB_PASSWORD,
-  {
-    host: process.env.DB_HOST,
-    dialect: process.env.DB_DIALECT,
-    logging: false,
-  }
-);
+// const connection = new Sequelize(
+//   process.env.DB_DATABASE,
+//   process.env.DB_USERNAME,
+//   process.env.DB_PASSWORD,
+//   {
+//     host: process.env.DB_HOST,
+//     dialect: process.env.DB_DIALECT,
+//     logging: false,
+//   }
+// );
+
+// Método de conexión a la base datos pasándole la url de conexión completa (Opción 1 en https://sequelize.org/docs/v6/getting-started/#connecting-to-a-database)
+const connection = new Sequelize(process.env.DB_URL, {
+  logging: false,
+});
 
 // Función de comprobación de la conexión a la base de datos
 const checkDB = async () => {
