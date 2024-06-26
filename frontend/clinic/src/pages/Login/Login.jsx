@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Grid,
   Paper,
@@ -8,9 +7,9 @@ import {
   Typography,
   Link,
   Checkbox,
-} from '@material-ui/core'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
+} from '@mui/material'
+
+import React from 'react'
 import { useState } from 'react'
 import { login } from '../../services/authService'
 import { useNavigate } from 'react-router-dom'
@@ -47,14 +46,13 @@ function Login() {
   }
   const avatarStyle = { backgroundColor: '#1bbd7e' }
   const btnstyle = { margin: '8px 0' }
-  //console.log(email)
+  console.log(email)
+
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
-          <Avatar style={avatarStyle}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Avatar style={avatarStyle}>{/* <LockOutlinedIcon /> */}</Avatar>
           <h2>Login</h2>
         </Grid>
         <TextField
@@ -74,10 +72,10 @@ function Login() {
           fullWidth
           required
         />
-        <FormControlLabel
-          control={<Checkbox name="checkedB" color="primary" />}
-          label="Remember me"
-        />
+        {/* <FormControlLabel
+        control={<Checkbox name="checkedB" color="primary" />}
+        label="Remember me"
+      /> */}
         <Button
           onClick={handleSubmit}
           type="submit"
