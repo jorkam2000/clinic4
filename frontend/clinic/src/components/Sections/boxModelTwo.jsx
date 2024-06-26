@@ -3,15 +3,15 @@ import './boxModelTwo.css';
 import './commonBox.css'
 
 
-function boxModel(title,firstFour,lastThree){
+function BoxModelTwo(title,firstFour,lastThree){
     
     return (
         <div class='boxModelTwo'>
-            <div class='titleSection'>{title}</div>
-            <div class='inputSectionMTwo'>{firstFour}</div>
-            <div class='largeInputSection'>{lastThree}</div>
+            <div className='titleSection'>{title}</div>
+            <div className='inputSectionMTwo'>{firstFour}</div>
+            <div className='largeInputSection'>{lastThree}</div>
         </div>
     )
 }
 
-export default commonBox;
+export default BoxModelTwo;

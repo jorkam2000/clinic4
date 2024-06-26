@@ -6,7 +6,7 @@ import Doctor from "../pages/Doctor/Doctor";
 import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
-import profilePage from '../components/pages/MyProfile/myProfileEdit';
+import ProfilePage from '../components/pages/MyProfile/myProfileEdit';
 
 
 const router = createBrowserRouter([
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/main',
-                element: <profilePage/>
+                element: <ProfilePage/>
             }
         ]
     }

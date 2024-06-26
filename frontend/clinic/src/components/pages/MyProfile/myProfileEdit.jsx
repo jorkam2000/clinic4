@@ -1,28 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import '../../Sections/ProfileDetails/profileDetails'
-import '../commonElements'
-import commonElementsPage from '../commonElements';
-import '../../Sections/ProfileDetails/profileDetails';
-import '../../Independents/Button/buttons';
+import CommonElementsPage from '../commonElements';
+import NewDetails from '../../Sections/ProfileDetails/profileDetails';
+import Button from '../../Independents/Button/buttons';
 
 
 
-
-function profilePage(){
-    function backToEdit(){
-        changer([button(true,'Edit',editProcess)])
+function ProfilePage() {
+    function backToEdit() {
+        changer([<Button key="edit" isPrimary={true} text='Edit' onClick={editProcess} />]);
     }
-    function saveProcess(){
+
+    function saveProcess() {
         /*Falta añadir lo que se haga para guardar en el backend*/
-        changer([button(true,'Edit',editProcess)])
+        changer([<Button key="edit" isPrimary={true} text='Edit' onClick={editProcess} />]);
     }
-    function editProcess(){
-        changer([button(false,'Cancel',backToEdit),button(true,'Save',saveProcess)])
+
+    function editProcess() {
+        changer([
+            <Button key="cancel" isPrimary={false} text='Cancel' onClick={backToEdit} />,
+            <Button key="save" isPrimary={true} text='Save' onClick={saveProcess} />
+        ]);
     }
-    const [initial,changer] = useState([button(true,'Edit',editProcess)])
-    
-    commonElementsPage('Profile details',newDetails(initial))
+
+    const [initial, changer] = useState([
+        <Button key="edit" isPrimary={true} text='Edit' onClick={editProcess} />
+    ]);
+
+    return (
+        <CommonElementsPage
+            title='Profile details'
+            notCommonElements={[
+                <NewDetails key="details" buttons={initial} />
+            ]}
+        />
+    );
 }
 
-export default profilePage;
+export default ProfilePage;
+

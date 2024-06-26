@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './allTableElements.css';
-import './footerRow/footerRow';
-import './table';
+import FooterRow from './footerRow/footerRow';
+import TableMatrix from './table';
 
-function mainTable(Title,Matrix,initNumber,endNumber){
+function MainTable(Title,Matrix,initNumber,endNumber){
     return (
         <div id='mainComponents'>
             <div id='tableComponent'>
@@ -15,9 +15,11 @@ function mainTable(Title,Matrix,initNumber,endNumber){
                 </div>
             </div>
             <div class='table-container'>
-                {tableMatrix(Matrix)}
+                {TableMatrix(Matrix)}
             </div>
-            {footerRow(initNumber,endNumber)}
+            {FooterRow(initNumber,endNumber)}
         </div>
     )
 }
+
+export default MainTable

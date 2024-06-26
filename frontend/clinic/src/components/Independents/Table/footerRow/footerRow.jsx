@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import '../navButton';
+import NavButton from '../navButton';
 
-function footerRow(numberCurrent,numberEnd){
+function FooterRow(numberCurrent,numberEnd){
     return (
         <div class="footer-container">
             <button class="navigationButton" id="tablePaginationBack">&#8592;</button>
             <p>{`${numberCurrent} of ${numberEnd}`}</p>
-            <button class="navigationButton" id="tablePaginationForward">&#x2192;</button>
+            {NavButton(()=>console.log(0))}
         </div> 
     )
 }
 
-export default footerRow;
+export default FooterRow;

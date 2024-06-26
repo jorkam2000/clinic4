@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './button.css'
 
 
 
-function button(main,buttonText,onClickF){
+function Button({main,buttonText,onClickF}){
     let position;
     if (main){position='mainB'}
     else {position='secB'}
     return (
         <div>
-            <button class={position} onClick={onClickF} id="miBoton">{buttonText}</button>
+            <button className={position} onClick={onClickF} id="miBoton">{buttonText}</button>
         </div>
     )
 }
 
-export default button;
+export default Button;

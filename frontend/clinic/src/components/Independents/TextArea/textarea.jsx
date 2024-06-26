@@ -1,7 +1,7 @@
 import React from 'react';
 import './textarea.css';
 
-function textAreaInput(title){
+function TextAreaInput({title}){
     return (
         <div>
             <label for={title}>{title}</label>
@@ -11,4 +11,4 @@ function textAreaInput(title){
     )
 }
 
-export default textAreaInput
+export default TextAreaInput

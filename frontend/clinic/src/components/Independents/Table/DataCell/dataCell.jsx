@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../allTableElements.css';
 
-function dataCell(content){
+function DataCell(content){
     return (
         <td>{content}</td>
     )
 }
 
-export default dataCell;
+export default DataCell;

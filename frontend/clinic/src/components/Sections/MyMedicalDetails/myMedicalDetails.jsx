@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import '../commonBox';
-import '../boxModelTwo';
-import '../../Independents/Input/Input';
-import '../../Independents/TextArea/textarea';
-import textAreaInput from '../../Independents/TextArea/textarea';
+import BoxModelTwo from '../boxModelTwo';
+import Input from '../../Independents/Input/Input';
+import TextAreaInput from '../../Independents/TextArea/textarea';
 
 
-function myMedicalDetails(){
+function MyMedicalDetails(){
     return (
         <div>
-            {boxModelTwo('Appointment details',[Input('First Name'),Input('Insurance Type'),Input('Last Name'),Input('Insurance Number')],[textAreaInput('Historical record')])}
+            {BoxModelTwo('Appointment details',[Input('First Name'),Input('Insurance Type'),Input('Last Name'),Input('Insurance Number')],[TextAreaInput('Historical record')])}
         </div>
     )
 }
 
-export default myMedicalDetails;
+export default MyMedicalDetails;

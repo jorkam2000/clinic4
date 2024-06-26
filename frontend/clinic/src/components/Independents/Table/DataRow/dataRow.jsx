@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import '../allTableElements.css';
 
-function dataRow(listOfCells){
+function DataRow(listOfCells){
     return (
         <tr>{listOfCells}</tr>
     )
 }
 
-export default dataRow;
+export default DataRow;

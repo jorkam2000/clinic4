@@ -1,17 +1,21 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import './commonElements.css';
-import '../Independents/Sidebar/sidebar';
+import Sidebar from '../Independents/Sidebar/sidebar';
+import Header from '../Independents/Header/header';
 
-function commonElementsPage(topElement,notCommonElements){
+function CommonElementsPage({ title, notCommonElements }) {
     return (
-        <div class='mainBox'>
-            <div class='column leftSide'>{sidebar}</div>
-            <div class='column rightSide'>
-                {[topElement,notCommonElements]}
+        <div className='mainBox'>
+            <div className='column leftSide' key='LeftSide_CEP'>
+                <Sidebar />
+            </div>
+            <div className='column rightSide' key='RightSide_CEP'>
+                <Header title={title} />
+                {notCommonElements}
             </div>
         </div>
-    )
+    );
 }
 
-export default commonElementsPage;
+export default CommonElementsPage;

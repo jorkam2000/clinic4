@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import '../commonBox';
-import commonBox from '../commonBox';
-import '../../Independents/Input/Input';
-
+import CommonBox from '../commonBox';
+import Input from '../../Independents/Input/Input';
 
 
-function newDetails(buttons){
+
+function NewDetails({ buttons }) {
     return (
         <div>
-            {commonBox('Profile details',[Input('First Name'),Input('Email'),Input('Phone'),Input('Last name'),Input('Password')],buttons)}
+            <CommonBox 
+                title='Profile details' 
+                elements={[
+                    <Input key="first-name" labelName='First Name' />,
+                    <Input key="email" labelName='Email' />,
+                    <Input key="phone" labelName='Phone' />,
+                    <Input key="last-name" labelName='Last name' />,
+                    <Input key="password" labelName='Password' />
+                ]}
+                buttons={buttons}
+            />
         </div>
-    )
+    );
 }
 
-export default newDetails;
+export default NewDetails;

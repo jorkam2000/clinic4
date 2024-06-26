@@ -1,10 +1,10 @@
 import React from 'react';
 import '../allTableElements.css';
 
-function headerCell(content){
+function HeaderCell(content){
     return (
         <th>{content}</th>
     );
 }
 
-export default headerCell;
+export default HeaderCell;

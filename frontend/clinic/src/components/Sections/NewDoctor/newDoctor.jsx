@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import '../commonBox';
-import commonBox from '../commonBox';
+import CommonBox from '../commonBox';
 import '../../Independents/Input/Input';
 
 
-function newDoctor(buttons){
+function NewDoctor(buttons){
     return (
         <div>
-            {commonBox('New doctor details',[Input('First Name'),Input('Email'),Input('Phone'),Input('Speciality'),Input('Last name'),Input('Password')],buttons)}
+            {CommonBox('New doctor details',[Input('First Name'),Input('Email'),Input('Phone'),Input('Speciality'),Input('Last name'),Input('Password')],buttons)}
         </div>
     )
 }
 
-export default newDoctor;
+export default NewDoctor;

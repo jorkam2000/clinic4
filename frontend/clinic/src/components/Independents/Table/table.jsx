@@ -1,31 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './allTableElements.css';
-import './headerCell/headerCell';
-import './HeaderRow/headerRow';
-import './DataCell/dataCell';
-import './DataRow/dataRow';
-import './footerRow/footerRow';
+import HeaderCell from './headerCell/headerCell';
+import HeaderRow from './HeaderRow/headerRow';
+import DataCell from './DataCell/dataCell';
+import DataRow from './DataRow/dataRow';
+import FooterRow from './footerRow/footerRow';
 
-import './navButton';
-import headerCell from './headerCell/headerCell';
+import NavButton from './navButton';
+import HeaderCell from './headerCell/headerCell';
 
 
-function tableMatrix(matrix){
-    let header = headerRow(matrix[0].map((x)=>headerCell(x)));
-    header.push(headerCell('-'));
+function TableMatrix(matrix){
+    let header = HeaderRow(matrix[0].map((x)=>HeaderCell(x)));
+    header.push(HeaderCell('-'));
 
     let rows = matrix.slice(1);
     let formattedRows = [];
     for (let row of rows){
-        let formattedRow = dataRow(row.map((x)=>dataCell(x)));
-        formattedRow.push(navButton);
+        let formattedRow = DataRow(row.map((x)=>DataCell(x)));
+        formattedRow.push(NavButton(()=>{console.log(1)}));
         formattedRows.push(formattedRow);
     }
 
 
     return (
-        <table class="table-container">
+        <table className="table-container">
             <thead>
                 {header}
             </thead>
@@ -36,4 +36,4 @@ function tableMatrix(matrix){
     )
 }
 
-export default tableMatrix;
+export default TableMatrix;

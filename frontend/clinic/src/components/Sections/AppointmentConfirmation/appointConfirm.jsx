@@ -1,9 +1,10 @@
-import React from 'react';
-import '../../Independents/Input/Input';
-import '../../Independents/Button/buttons';
+import React, { useState } from 'react';
+import Input from '../../Independents/Input/Input';
+import Button from '../../Independents/Button/buttons';
+import './appointConfirm.css';
 
 
-function appointConfirm(){
+function AppointConfirm(){
     
     return (
         <div class='appoconfirm'>
@@ -14,4 +15,4 @@ function appointConfirm(){
     )
 }
 
-export default commonBox;
+export default AppointConfirm;

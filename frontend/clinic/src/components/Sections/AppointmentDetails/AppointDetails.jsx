@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import '../commonBox';
-import '../boxModelTwo';
-import '../../Independents/Input/Input';
-import '../../Independents/TextArea/textarea';
-import textAreaInput from '../../Independents/TextArea/textarea';
+import BoxModelTwo from '../boxModelTwo';
+import Input from '../../Independents/Input/Input';
+import TextAreaInput from '../../Independents/TextArea/textarea';
 
 
-function appointmentDetails(){
+function AppointmentDetails(){
     return (
         <div>
-            {boxModelTwo('Appointment details',[Input('Date'),Input('Speciality'),Input('Time'),Input('Doctor')],[textAreaInput('Observations'),textAreaInput('Evaluation'),textAreaInput('Prescription')])}
+            {BoxModelTwo('Appointment details',[Input('Date'),Input('Speciality'),Input('Time'),Input('Doctor')],[TextAreaInput('Observations'),TextAreaInput('Evaluation'),TextAreaInput('Prescription')])}
         </div>
     )
 }
 
-export default appointmentDetails;
+export default AppointmentDetails;

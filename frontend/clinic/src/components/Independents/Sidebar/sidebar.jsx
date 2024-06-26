@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Table/allTableElements.css';
 
-function sidebar(){
+function Sidebar(){
     return (
         <aside id="sideBar">
             <div>
@@ -18,4 +18,4 @@ function sidebar(){
     )
 }
 
-export default sidebar;
+export default Sidebar;

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './allTableElements.css';
 
-function navButton(onClickF){
+function NavButton(onClickF){
     return (
         <button class="navigationButton" id="navigationForward" onClick={onClickF}>&#x2192;</button>
     );
 }
 
-export default navButton;
+export default NavButton;

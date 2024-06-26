@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Table/allTableElements.css';
 
-function header(){
+function Header({title}){
     return (
         <header id="header">
-            <button class="navigationButton" id="backArrowHeader">&#8592;</button>
-            <h1>Users</h1>
+            <button className="navigationButton" id="backArrowHeader">&#8592;</button>
+            <h1>{title}</h1>
             <div id="statusHeader">
                 <p>Status: </p>
                 <p id="statusLabel"> confirmed </p>
@@ -14,4 +14,4 @@ function header(){
     )
 }
 
-export default header;
+export default Header;
