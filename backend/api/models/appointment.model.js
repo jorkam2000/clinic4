@@ -12,12 +12,12 @@ const Appointment = connection.define(
     time: {
       type: DataTypes.TIME,
       allowNull: false, // campo obligatorio
-      unique: true, // Hacemos que sea un campo con valor único
+      // unique: true, // Hacemos que sea un campo con valor único
     },
     confirmed: {
       type: DataTypes.BOOLEAN,
       allowNull: false, // campo obligatorio
-      defaultValue: true,
+      defaultValue: false,
     },
     medical_observation: {
       type: DataTypes.STRING,
@@ -34,6 +34,15 @@ const Appointment = connection.define(
   },
   {
     timestamps: true,
+  },
+  {
+    indexes: [
+      // Create a unique index on email
+      {
+        unique: true,
+        fields: ["date", "time"],
+      },
+    ],
   }
 );
 
