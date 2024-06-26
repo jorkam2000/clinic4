@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../allTableElements.css';
 
-function DataCell(content){
+function DataCell({content}){
     return (
         <td>{content}</td>
     )

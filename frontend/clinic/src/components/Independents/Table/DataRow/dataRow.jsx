@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import '../allTableElements.css';
 
-function DataRow(listOfCells){
+function DataRow({listOfCells}){
     return (
         <tr>{listOfCells}</tr>
     )

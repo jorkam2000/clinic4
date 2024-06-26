@@ -5,12 +5,23 @@ import Input from '../../Independents/Input/Input';
 import TextAreaInput from '../../Independents/TextArea/textarea';
 
 
-function MyMedicalDetails(){
+function MyMedicalDetails() {
     return (
         <div>
-            {BoxModelTwo('Appointment details',[Input('First Name'),Input('Insurance Type'),Input('Last Name'),Input('Insurance Number')],[TextAreaInput('Historical record')])}
+            <BoxModelTwo
+                title='Appointment details'
+                inputElements={[
+                    <Input key="first-name" labelName='First Name' />,
+                    <Input key="insurance-type" labelName='Insurance Type' />,
+                    <Input key="last-name" labelName='Last Name' />,
+                    <Input key="insurance-number" labelName='Insurance Number' />
+                ]}
+                textAreaElements={[
+                    <TextAreaInput key="historical-record" labelName='Historical record' />
+                ]}
+            />
         </div>
-    )
+    );
 }
 
 export default MyMedicalDetails;

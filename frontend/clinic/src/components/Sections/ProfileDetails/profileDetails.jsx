@@ -10,7 +10,7 @@ function NewDetails({ buttons }) {
         <div>
             <CommonBox 
                 title='Profile details' 
-                elements={[
+                inputElements={[
                     <Input key="first-name" labelName='First Name' />,
                     <Input key="email" labelName='Email' />,
                     <Input key="phone" labelName='Phone' />,

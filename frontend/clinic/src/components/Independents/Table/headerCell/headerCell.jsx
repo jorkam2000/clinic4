@@ -1,7 +1,7 @@
 import React from 'react';
 import '../allTableElements.css';
 
-function HeaderCell(content){
+function HeaderCell({content}){
     return (
         <th>{content}</th>
     );

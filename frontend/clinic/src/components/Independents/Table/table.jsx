@@ -11,29 +11,30 @@ import NavButton from './navButton';
 import HeaderCell from './headerCell/headerCell';
 
 
-function TableMatrix(matrix){
-    let header = HeaderRow(matrix[0].map((x)=>HeaderCell(x)));
-    header.push(HeaderCell('-'));
+function TableMatrix({ matrix }) {
+    let header = matrix[0].map((x, index) => <HeaderCell key={`header-${index}`} value={x} />);
+    header.push(<HeaderCell key="header-dummy" value="-" />);
 
     let rows = matrix.slice(1);
-    let formattedRows = [];
-    for (let row of rows){
-        let formattedRow = DataRow(row.map((x)=>DataCell(x)));
-        formattedRow.push(NavButton(()=>{console.log(1)}));
-        formattedRows.push(formattedRow);
-    }
-
+    let formattedRows = rows.map((row, rowIndex) => {
+        let formattedRow = row.map((cell, cellIndex) => <DataCell key={`data-${rowIndex}-${cellIndex}`} value={cell} />);
+        formattedRow.push(<NavButton key={`nav-${rowIndex}`} onClick={() => { console.log(1) }} />);
+        return formattedRow;
+    });
 
     return (
         <table className="table-container">
             <thead>
-                {header}
+                <HeaderRow>{header}</HeaderRow>
             </thead>
             <tbody>
-                {formattedRows}
+                {formattedRows.map((row, index) => <DataRow key={`row-${index}`}>{row}</DataRow>)}
             </tbody>
+            <tfoot>
+                <FooterRow />
+            </tfoot>
         </table>
-    )
+    );
 }
 
 export default TableMatrix;
