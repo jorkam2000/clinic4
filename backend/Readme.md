@@ -4,28 +4,37 @@ ALL ROUTES START WITH /api
 
 ![](dbdiagram.png)
 
+### Production
+
+The URL in production is: https://clinic4.onrender.com
+The database is uploaded in aiven
+
 ### Authentication Endpoints
 
 The Authentication flow for the application is:
 
 ### User Signup/Login
 
-| METHOD | ENDPOINT     | TOKEN | ROLE | DESCRIPTION | POST PARAMS                  | RETURNS                                |
-| ------ | ------------ | ----- | ---- | ----------- | ---------------------------- | -------------------------------------- |
-| POST   | /auth/signup | -     | user | User Signup | `name`, `email`, `password`, | { message: `string`, result: `token` } |
-| POST   | /auth/login  | -     | user | User Login  | `email`, `password`          | { message: `string`, result: `token` } |
+| METHOD | ENDPOINT     | TOKEN | ROLE | DESCRIPTION | POST PARAMS                                                                               | RETURNS                                |
+| ------ | ------------ | ----- | ---- | ----------- | ----------------------------------------------------------------------------------------- | -------------------------------------- |
+| POST   | /auth/signup | -     | user | User Signup | `name`, `lastname`, `phone`, `email`, `password`, `historical_record`, `insurance_number` | { message: `string`, result: `token` } |
+| POST   | /auth/login  | -     | user | User Login  | `email`, `password`                                                                       | { message: `string`, result: `token` } |
 
 ### User Endpoints
 
-| METHOD | ENDPOINT       | TOKEN | ROLE  | DESCRIPTION         | POST PARAMS                                  | RETURNS                                 |
-| ------ | -------------- | ----- | ----- | ------------------- | -------------------------------------------- | --------------------------------------- |
-| GET    | /user/profile  | YES   | user  | Get Own Profile     |                                              | { message: `string`, result: `object` } |
-| PUT    | /user/profile  | YES   | user  | Update Own Profile  | `name`, `email`,`phone`                      | { message: `string`, result: `object` } |
-| PUT    | /user/password | YES   | user  | Update Own password | `old password`, `new password`               | { message: `string`, result: `object` } |
-| GET    | /user          | YES   | admin | Get All Users       |                                              | { message: `string`, result: `array` }  |
-| GET    | /user/:id      | YES   | admin | Get One User        |                                              | { message: `string`, result: `object` } |
-| PUT    | /user/:id      | YES   | admin | Update One User     | `name`, `email`, `phone`, `password`, `role` | { message: `string`, result: `object` } |
-| POST   | /user          | YES   | admin | Create One User     | `name`, `email`, `phone`, `password`, `role` | { message: `string`, result: `object` } |
+| METHOD | ENDPOINT             | TOKEN | ROLE   | DESCRIPTION            | POST PARAMS                                                                                                        | RETURNS                                 |
+| ------ | -------------------- | ----- | ------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------- |
+| GET    | /user/profile        | YES   | user   | Get Own Profile        |                                                                                                                    | { message: `string`, result: `object` } |
+| PUT    | /user/profile        | YES   | user   | Update Own Profile     | `name`, `email`,`phone`                                                                                            | { message: `string`, result: `object` } |
+| PUT    | /user/password       | YES   | user   | Update Own password    | `old password`, `new password`                                                                                     | { message: `string`, result: `object` } |
+| PUT    | /user/:id            | YES   | user   | Update One User        | `name`, `lastname`, `phone`, `email`, `password`                                                                   | { message: `string`, result: `object` } |
+| POST   | /user/addappointment | YES   | user   | Add and appointment    | `date`, `time`, `medical_observation`, `medical_evaluation`, `medical_prescription`, `doctorId` `specializationId` | { message: `string`, result: `object` } |
+| GET    | /user                | YES   | admin  | Get All Users          |                                                                                                                    | { message: `string`, result: `array` }  |
+| GET    | /user/:id            | YES   | admin  | Get One User           |                                                                                                                    | { message: `string`, result: `object` } |
+| PUT    | /user/:id            | YES   | admin  | Update One User        | `name`, `email`, `phone`, `password`, `role`                                                                       | { message: `string`, result: `object` } |
+| POST   | /user                | YES   | admin  | Create One User        | `name`, `email`, `phone`, `password`, `role`                                                                       | { message: `string`, result: `object` } |
+| GET    | /user/visits         | YES   | doctor | Get all visits         |                                                                                                                    | { message: `string`, result: `array` }  |
+| PUT    | /user/confirm        | YES   | doctor | Confirm an appointment | `appointmentId`                                                                                                    | { message: `string`, result: `object` } |
 
 ### Patient Endpoints
 
@@ -49,30 +58,33 @@ The Authentication flow for the application is:
 | PUT    | /appointment/:id | YES   | admin  | Update one appointment   | `doctor_data_id`, `date`, `time`, `confirmed`, `medical_observation`, `medical_evaluation`, `medical_prescription` | { message: `string`, result: `object` } |
 | POST   | /appointment     | YES   | admin  | Create one appointment   | `doctor_data_id`, `date`, `time`, `confirmed`, `medical_observation`, `medical_evaluation`, `medical_prescription` | { message: `string`, result: `object` } |
 
-## Doctor_data Endpoints
+## Doctor Endpoints
 
-| METHOD | ENDPOINT         | TOKEN | ROLE   | DESCRIPTION            | POST PARAMS                 | RETURNS                                 |
-| ------ | ---------------- | ----- | ------ | ---------------------- | --------------------------- | --------------------------------------- |
-| GET    | /doctor_data     | YES   | doctor | Get All doctors data   |                             | { message: `string`, result: `array` }  |
-| GET    | /doctor_data     | YES   | admin  | Get All doctors data   |                             | { message: `string`, result: `array` }  |
-| GET    | /doctor_data/:id | YES   | admin  | Get One doctor data    |                             | { message: `string`, result: `object` } |
-| PUT    | /doctor_data/:id | YES   | admin  | Update One doctor data | `doctor_id`, `specialty_id` | { message: `string`, result: `object` } |
-| POST   | /doctor_data     | YES   | admin  | Create One doctor data | `doctor_id`, `specialty_id` | { message: `string`, result: `object` } |
+| METHOD | ENDPOINT                                 | TOKEN | ROLE   | DESCRIPTION                       | POST PARAMS                 | RETURNS                                 |
+| ------ | ---------------------------------------- | ----- | ------ | --------------------------------- | --------------------------- | --------------------------------------- |
+| GET    | /doctor                                  | YES   | user   | Get All doctors data              |                             | { message: `string`, result: `array` }  |
+| GET    | /doctor/:id                              | YES   | user   | Get One doctor data               |                             | { message: `string`, result: `object` } |
+| PUT    | /doctor/:id                              | YES   | doctor | Update One doctor data            | `doctor_id`, `specialty_id` | { message: `string`, result: `object` } |
+| DELETE | /doctor/:id                              | YES   | admin  | Delete One doctor data            |                             | { message: `string`, result: `object` } |
+| POST   | /doctor                                  | YES   | admin  | Create One doctor data            | `doctor_id`, `specialty_id` | { message: `string`, result: `object` } |
+| POST   | /doctor/:userId/add/:specializationId    | YES   | admin  | Add specialization to doctor      |                             | { message: `string`, result: `object` } |
+| POST   | /doctor/:userId/delete/:specializationId | YES   | admin  | Delete specialization from doctor |                             | { message: `string`, result: `object` } |
 
 ## Specializations Endpoints
 
-| METHOD | ENDPOINT            | TOKEN | ROLE  | DESCRIPTION               | POST PARAMS | RETURNS                                 |
-| ------ | ------------------- | ----- | ----- | ------------------------- | ----------- | --------------------------------------- |
-| GET    | /specialization     | YES   | admin | Get All Specializations   |             | { message: `string`, result: `array` }  |
-| GET    | /specialization/:id | YES   | admin | Get One Specialization    |             | { message: `string`, result: `object` } |
-| PUT    | /specialization/:id | YES   | admin | Update One Specialization | `name`      | { message: `string`, result: `object` } |
-| POST   | /specialization     | YES   | admin | Create One Specialization | `name`      | { message: `string`, result: `object` } |
+| METHOD | ENDPOINT            | TOKEN | ROLE   | DESCRIPTION               | POST PARAMS | RETURNS                                 |
+| ------ | ------------------- | ----- | ------ | ------------------------- | ----------- | --------------------------------------- |
+| GET    | /specialization     | YES   | doctor | Get All Specializations   |             | { message: `string`, result: `array` }  |
+| GET    | /specialization/:id | YES   | user   | Get One Specialization    |             | { message: `string`, result: `object` } |
+| PUT    | /specialization/:id | YES   | admin  | Update One Specialization | `name`      | { message: `string`, result: `object` } |
+| POST   | /specialization     | YES   | admin  | Create One Specialization | `name`      | { message: `string`, result: `object` } |
 
 ## Insurance Endpoints
 
 | METHOD | ENDPOINT       | TOKEN | ROLE  | DESCRIPTION          | POST PARAMS | RETURNS                                 |
 | ------ | -------------- | ----- | ----- | -------------------- | ----------- | --------------------------------------- |
-| GET    | /insurance     | YES   | admin | Get All insurances   |             | { message: `string`, result: `array` }  |
-| GET    | /insurance/:id | YES   | admin | Get One insurance    |             | { message: `string`, result: `object` } |
+| GET    | /insurance     | YES   | user  | Get All insurances   |             | { message: `string`, result: `array` }  |
+| GET    | /insurance/:id | YES   | user  | Get One insurance    |             | { message: `string`, result: `object` } |
 | PUT    | /insurance/:id | YES   | admin | Update One insurance | `name`      | { message: `string`, result: `object` } |
 | POST   | /insurance     | YES   | admin | Create One insurance | `name`      | { message: `string`, result: `object` } |
+| DELETE | /insurance/:id | YES   | admin | Delete One insurance |             | { message: `string`, result: `object` } |
