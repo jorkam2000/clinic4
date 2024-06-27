@@ -15,11 +15,11 @@ function MainTable({ Title, Matrix, initNumber, endNumber }) {
                 </div>
             </div>
             <div className='table-container'>
-                <TableMatrix Matrix={Matrix} />
+                <TableMatrix key='Table' matrix={Matrix} />
             </div>
-            <FooterRow initNumber={initNumber} endNumber={endNumber} />
+            <FooterRow key='footer' initNumber={initNumber} endNumber={endNumber} />
         </div>
     );
 }
 
-export default MainTable
+export default MainTable;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../allTableElements.css';
 
-function HeaderRow(listOfCells){
+function HeaderRow({listOfCells}){
     return (
         <tr>
             {listOfCells}

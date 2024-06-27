@@ -10,13 +10,13 @@ function MyMedicalDetails() {
         <div>
             <BoxModelTwo
                 title='Appointment details'
-                inputElements={[
+                firstFour={[
                     <Input key="first-name" labelName='First Name' />,
                     <Input key="insurance-type" labelName='Insurance Type' />,
                     <Input key="last-name" labelName='Last Name' />,
                     <Input key="insurance-number" labelName='Insurance Number' />
                 ]}
-                textAreaElements={[
+                lastThree={[
                     <TextAreaInput key="historical-record" labelName='Historical record' />
                 ]}
             />

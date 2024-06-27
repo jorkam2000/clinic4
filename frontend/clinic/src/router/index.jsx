@@ -7,6 +7,8 @@ import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
 import ProfilePage from '../components/pages/MyProfile/myProfileEdit';
+import Accounts from "../components/pages/Accounts/Accounts";
+import MyMedicalDetails from "../components/Sections/MyMedicalDetails/myMedicalDetails";
 
 
 const router = createBrowserRouter([
@@ -47,6 +49,14 @@ const router = createBrowserRouter([
             {
                 path: '/main',
                 element: <ProfilePage/>
+            },
+            {
+                path: '/lists',
+                element: <Accounts/>
+            },
+            {
+                path: '/myMedicalDetails',
+                element: <MyMedicalDetails/>
             }
         ]
     }

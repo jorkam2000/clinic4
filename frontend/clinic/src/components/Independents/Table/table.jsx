@@ -8,31 +8,31 @@ import DataRow from './DataRow/dataRow';
 import FooterRow from './footerRow/footerRow';
 
 import NavButton from './navButton';
-import HeaderCell from './headerCell/headerCell';
 
 
 function TableMatrix({ matrix }) {
-    let header = matrix[0].map((x, index) => <HeaderCell key={`header-${index}`} value={x} />);
-    header.push(<HeaderCell key="header-dummy" value="-" />);
+    const header = matrix[0].map((x, index) => (
+        <HeaderCell key={`header-${index}`} content={x} />
+    ));
+    //header.push(<HeaderCell key="header-dummy" content="-" />);
 
-    let rows = matrix.slice(1);
-    let formattedRows = rows.map((row, rowIndex) => {
-        let formattedRow = row.map((cell, cellIndex) => <DataCell key={`data-${rowIndex}-${cellIndex}`} value={cell} />);
-        formattedRow.push(<NavButton key={`nav-${rowIndex}`} onClick={() => { console.log(1) }} />);
-        return formattedRow;
+    const rows = matrix.slice(1).map((row, rowIndex) => {
+        const formattedRow = row.map((cell, cellIndex) => (
+            <DataCell key={`data-${rowIndex}-${cellIndex}`} content={cell} />
+        ));
+        //formattedRow.push(<NavButton key={`nav-${rowIndex}`} onClick={() => { console.log(1); }} />);
+        //formattedRow.push(<DataCell key={`data-${-}-${-}`} content={'-'} />);
+        return <DataRow key={`row-${rowIndex}`} listOfCells={formattedRow} />;
     });
 
     return (
         <table className="table-container">
             <thead>
-                <HeaderRow>{header}</HeaderRow>
+                <HeaderRow listOfCells={header} />
             </thead>
             <tbody>
-                {formattedRows.map((row, index) => <DataRow key={`row-${index}`}>{row}</DataRow>)}
+                {rows}
             </tbody>
-            <tfoot>
-                <FooterRow />
-            </tfoot>
         </table>
     );
 }

@@ -5,7 +5,6 @@ import Sidebar from '../Independents/Sidebar/sidebar';
 import Header from '../Independents/Header/header';
 
 function CommonElementsPage({ title, notCommonElements }) {
-
     return (
         <div className='mainBox'>
             <div className='column leftSide' key='LeftSide_CEP'>
@@ -13,7 +12,9 @@ function CommonElementsPage({ title, notCommonElements }) {
             </div>
             <div className='column rightSide' key='RightSide_CEP'>
                 <Header title={title} />
-                {notCommonElements}
+                {notCommonElements.map((element, index) => (
+                    <div key={`element-${index}`}>{element}</div>
+                ))}
             </div>
         </div>
     );
