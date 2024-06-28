@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../Table/allTableElements.css';
+import '../main.css'
 
 function Header({title}){
     return (

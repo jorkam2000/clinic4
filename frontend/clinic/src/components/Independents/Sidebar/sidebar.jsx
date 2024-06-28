@@ -1,12 +1,12 @@
 import React from 'react';
 import '../Table/allTableElements.css';
+import '../main.css'
 
 function Sidebar(){
     return (
         <aside id="sideBar">
             <div>
-                <img src="./src/logo_icon.png" alt=""/>
-            </div>
+                <img src="../../../assets/logo_icon.png" alt="" />            </div>
             <div>
                 <a href="">My profile</a>
                 <a href="">Users</a>
