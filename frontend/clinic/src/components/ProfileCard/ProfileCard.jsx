@@ -1,14 +1,10 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import Avatar from '@mui/material/Avatar';
-import { red } from '@mui/material/colors';
+import * as React from 'react'
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import Avatar from '@mui/material/Avatar'
+import { red } from '@mui/material/colors'
 
-
-
-
-export default function ProfileCard({ userInfo} ) {
-    console.log(userInfo)
+export default function ProfileCard({ userInfo }) {
   return (
     <Card sx={{ maxWidth: 345, border: '1px solid black' }}>
       <CardHeader
@@ -17,11 +13,9 @@ export default function ProfileCard({ userInfo} ) {
             {userInfo.name[0].toUpperCase()}
           </Avatar>
         }
-       
         title={`${userInfo.name} ${userInfo.lastName}  ${userInfo.role}`}
         subheader={userInfo.email}
       />
-      
     </Card>
-  );
+  )
 }
