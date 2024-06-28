@@ -9,6 +9,7 @@ import Profile from "../pages/Profile/Profile";
 import ProfilePage from '../components/pages/MyProfile/myProfileEdit';
 import Accounts from "../components/pages/Accounts/Accounts";
 import MyMedicalDetails from "../components/Sections/MyMedicalDetails/myMedicalDetails";
+import MedicalData from "../components/pages/MedicalData/MedicalData";
 
 
 const router = createBrowserRouter([
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myMedicalDetails',
-                element: <MyMedicalDetails/>
+                element: <MedicalData/>
             }
         ]
     }

@@ -5,6 +5,7 @@
     margin-bottom: 10px;
 }
 
+
 #caption {
     position: sticky;
     top: 0px;
@@ -21,11 +22,12 @@
 }
 
 #searchInput {
+    margin-left:80px;
     padding: 5px;
     width: 150px;
     font-size: 0.9em;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
     margin-right: 10px;
 }
 

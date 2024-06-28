@@ -1,0 +1,141 @@
+body {
+    position: relative;
+    justify-content: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    background-color: #f0f0f0;
+}
+
+a {
+    color: #48AB93;
+}
+
+
+.mainBox {
+    position: sticky;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    min-width: 650px;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+}
+
+.leftSide,
+.rightSide,
+.mainComponents {
+    position: sticky;
+    background-color: #fcfcfc7f;
+    top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.leftSide {
+    display: flex;
+    position: sticky;
+    flex-direction: column;
+    width: 150px;
+    min-width: 150px;
+    margin-right: 20px;
+    padding: 20px;
+    height: fit-content;
+}
+
+.leftSide>aside>div {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.leftSide>aside>div>img {
+    width: 100%;
+}
+
+.leftSide>aside>div>a {
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.leftSide>aside>p {
+    margin-top: auto;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+
+#header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#statusHeader {
+    margin-left: auto;
+    color: #7c7c7c;
+}
+
+#statusHeader>p {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+.navigationButton {
+    padding: 5px 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.navigationButton:hover {
+    color: #48AB93;
+}
+.rightSide > div{
+    margin-bottom: 40px;
+}
+
+
+/* Hovers */
+tr:hover,
+a:hover {
+    background-color: #48AB93;
+    border-radius: 4px;
+    color: #242424;
+}
+
+a:hover,
+img:hover {
+    font-weight: bold;
+}
+
+/**/ root {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.rightSide {
+    position: sticky;
+    width: 100%;
+    max-width: 1000px;
+    min-width: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
