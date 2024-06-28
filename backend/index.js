@@ -2,7 +2,14 @@ require("dotenv").config(); // Dotenv para poder emplear variables de entorno
 
 const express = require("express");
 const morgan = require("morgan");
+<<<<<<< HEAD
 const cors = require('cors');
+||||||| ee4fd21
+
+=======
+const cors = require("cors");
+
+>>>>>>> 08f84b8758434abf7e0a28946e7d58ed782e99db
 const { checkDB, syncModels } = require("./database");
 const defineRelations = require("./database/relations");
 

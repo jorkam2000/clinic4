@@ -110,12 +110,12 @@ const deleteOneSpecialization = async (req, res) => {
         message: "No specialization found",
         result: null,
       });
+    } else {
+      res.status(200).json({
+        message: "Specialization deleted",
+        result: specialization,
+      });
     }
-
-    res.status(200).json({
-      message: "Specialization deleted",
-      result: specialization,
-    });
   } catch (error) {
     console.log(error);
     res.status(500).json({
