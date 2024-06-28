@@ -5,17 +5,31 @@ import Input from '../../Independents/Input/Input';
 
 
 
-function NewDetails({ buttons }) {
+function NewDetails({ buttons, dictOfValues, blockTyping }) {
     return (
         <div>
             <CommonBox 
                 title='Profile details' 
                 inputElements={[
-                    <Input key="first-name" labelName='First Name' />,
-                    <Input key="email" labelName='Email' />,
-                    <Input key="phone" labelName='Phone' />,
-                    <Input key="last-name" labelName='Last name' />,
-                    <Input key="password" labelName='Password' />
+                    <Input key="first-name" labelName='First Name'
+                        blockTyping={blockTyping}
+                        baseValue={dictOfValues['firstName']}
+                    />,
+                    <Input key="email" labelName='Email'
+                        blockTyping={blockTyping}
+                        baseValue={dictOfValues['email']}
+                    />,
+                    <Input key="phone" labelName='Phone'
+                        blockTyping={blockTyping}
+                        baseValue={dictOfValues['phone']}
+                    />,
+                    <Input key="last-name" labelName='Last name'
+                        blockTyping={blockTyping}
+                        baseValue={dictOfValues['lastName']}
+                    />,
+                    <Input key="password" labelName='Password'
+                        blockTyping={blockTyping}
+                    />
                 ]}
                 buttons={buttons}
             />

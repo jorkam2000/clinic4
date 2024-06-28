@@ -21,6 +21,7 @@ function MedicalData(){
             notCommonElements={[
                 <MyMedicalDetails
                     key='myMedicalDetails'
+                    user='0'
                 />,
                 <MainTable
                     key="VisitsKey"

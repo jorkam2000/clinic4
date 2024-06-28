@@ -8,6 +8,7 @@ import Button from '../../Independents/Button/buttons';
 
 function ProfilePage() {
     const [buttonsOptions, setButtons] = useState(false);
+    const [blockTyping, setTypingBlock] = useState(true);
 
     let buttonsWhenFalse = [<Button 
         key="edit" 
@@ -22,19 +23,29 @@ function ProfilePage() {
     ];
 
     function backToEdit() {
-        console.log('Se ejecuta');
         setButtons(false);
+        setTypingBlock(true);
     }
 
     function saveProcess() {
         /*Falta añadir lo que se haga para guardar en el backend*/
         setButtons(false);
-        console.log('Se ejecuta');
+        setTypingBlock(true);
     }
 
     function editProcess() {
         setButtons(true);
-        console.log('Se ejecuta');
+        setTypingBlock(false);
+    }
+
+    function getCurrentValues(){
+        let defaultDict = {
+            'firstName':'Manolo',
+            'email':'manolo@arias.com',
+            'phone':'0000000000000',
+            'lastName':'Arias'
+        }
+        return defaultDict;
     }
     
     let buttons;
@@ -45,7 +56,7 @@ function ProfilePage() {
         <CommonElementsPage
             title='Profile details'
             notCommonElements={[
-                <NewDetails key="details" buttons={buttons} />
+                <NewDetails key="details" buttons={buttons} blockTyping={blockTyping} dictOfValues={getCurrentValues()}/>
             ]}
         />
     );
